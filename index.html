@@ -1,137 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>miqim's blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>miqim's letters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'JetBrains Mono', monospace;
-            background: #0f0f0f;
-            color: #e4e4e4;
-            min-height: 100vh;
-            padding: 2rem;
+            font-family: 'Lora', serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.8;
+            overflow-x: hidden;
         }
         
-        .container { max-width: 700px; margin: 0 auto; }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
         
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
+            font-size: 4.5rem;
+            font-weight: 500;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 1rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .post {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
+        .subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+        
+        .scroll-indicator {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        
+        .letters-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        
+        .letter {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .post::before {
+        .letter::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            transition: height 0.4s ease;
+        }
+        
+        .letter:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.1);
+        }
+        
+        .letter:hover::before {
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            opacity: 0;
-            transition: opacity 0.2s;
         }
         
-        .post:hover {
-            border-color: #667eea;
-            transform: translateX(4px);
-        }
-        
-        .post:hover::before { opacity: 1; }
-        
-        .meta {
+        .letter-header {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .letter-number {
+            font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
-            color: #888;
-            margin-bottom: 0.8rem;
+            color: #667eea;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .title {
-            font-size: 1.1rem;
+            letter-spacing: 1.5px;
             font-weight: 500;
-            margin-bottom: 0.7rem;
-            color: #fff;
         }
         
-        .content {
-            line-height: 1.7;
-            color: #aaa;
-            font-size: 0.9rem;
+        .letter-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #666;
             font-weight: 300;
-            max-height: 3.4em;
-            overflow: hidden;
-            transition: max-height 0.3s;
         }
         
-        .content.expanded { max-height: 1000px; }
+        .letter-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .letter-body {
+            font-size: 1.05rem;
+            color: #b0b0b0;
+            line-height: 1.9;
+            max-height: 5.7em;
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.5s ease;
+        }
+        
+        .letter-body.expanded {
+            max-height: 3000px;
+        }
+        
+        .letter-body::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3em;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.03));
+            opacity: 1;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .letter-body.expanded::after {
+            opacity: 0;
+        }
+        
+        .letter-footer {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         
         .tag {
             display: inline-block;
-            background: #2a2a2a;
+            background: rgba(102, 126, 234, 0.15);
             color: #667eea;
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            margin-top: 0.8rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
         }
         
-        @media (max-width: 600px) {
-            body { padding: 1rem; }
-            h1 { font-size: 2rem; }
+        .read-more {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .read-more:hover {
+            color: #764ba2;
+            transform: translateX(4px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: #555;
+            font-weight: 300;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .letter { padding: 2rem; }
+            .letter-title { font-size: 1.5rem; }
+            .letters-section { padding: 4rem 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>miqim's blog</h1>
-        
-        <div class="post" onclick="this.querySelector('.content').classList.toggle('expanded')">
-            <div class="meta"><span>blog no #1</span><span>Dec 10, 2025</span></div>
-            <div class="title">Poor People’s Peace, Sleep You Crazy One</div>
-            <div class="content">
-The Bangla phrase "goriber shanti ghume re pagla" and its English counterpart **poor peoples peace sleep you crazy one** capture the fragile rest of those who live under constant pressure It feels like something said at the end of a long day half joking half tired when someone knows sleep is the only peace left
-The line paints a picture of a small room a creaking fan and worries in the corners and yet someone saying just sleep you fool that is all the peace we get There is no anger only a tired familiarity with struggle Sleep becomes a temporary shelter from stress the only moment the mind can drift free
-Sayiing "re pagla" adds a touch of humor a playful honesty showing how people laugh at their own hardship to survive it This phrase conveys the resilience of the poor the irony of finding peace only in sleep and the quiet acceptance that tomorrow will demand the same endurance again</div>
-            <span class="tag">design</span>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>miqim's letters</h1>
+            <div class="subtitle">thoughts & reflections</div>
+            <div class="scroll-indicator">↓ scroll to read</div>
         </div>
+    </section>
+    
+    <section class="letters-section">
+        <article class="letter">
+            <div class="letter-header">
+                <span class="letter-number">Letter №3</span>
+                <span class="letter-date">December 10, 2025</span>
+            </div>
+            <h2 class="letter-title">Poor People's Peace, Sleep You Crazy One</h2>
+            <div class="letter-body">
+                The Bangla phrase "goriber shanti ghume re pagla" and its English counterpart <em>poor people's peace sleep you crazy one</em> capture the fragile rest of those who live under constant pressure. It feels like something said at the end of a long day, half joking, half tired, when someone knows sleep is the only peace left.
+                <br><br>
+                The line paints a picture of a small room, a creaking fan, and worries in the corners—and yet someone saying: just sleep, you fool, that is all the peace we get. There is no anger, only a tired familiarity with struggle. Sleep becomes a temporary shelter from stress, the only moment the mind can drift free.
+                <br><br>
+                Saying "re pagla" adds a touch of humor, a playful honesty showing how people laugh at their own hardship to survive it. This phrase conveys the resilience of the poor, the irony of finding peace only in sleep, and the quiet acceptance that tomorrow will demand the same endurance again.
+            </div>
+            <div class="letter-footer">
+                <span class="tag">reflection</span>
+                <button class="read-more" onclick="toggleLetter(this)">Read More →</button>
+            </div>
+        </article>
         
-        <div class="post" onclick="this.querySelector('.content').classList.toggle('expanded')">
-            <div class="meta"><span>blog no #2</span><span>Dec 5, 2025</span></div>
-            <div class="title">Why I Love GitHub Pages</div>
-            <div class="content">GitHub Pages is free, reliable, and incredibly easy to use. Just push your HTML files to a repository, and you have a live website. No need for complicated hosting setups or paying for servers. Perfect for personal blogs and portfolios.</div>
-            <span class="tag">hosting</span>
-        </div>
+        <article class="letter">
+            <div class="letter-header">
+                <span class="letter-number">Letter №2</span>
+                <span class="letter-date">December 5, 2025</span>
+            </div>
+            <h2 class="letter-title">Why I Love GitHub Pages</h2>
+            <div class="letter-body">
+                GitHub Pages is free, reliable, and incredibly easy to use. Just push your HTML files to a repository, and you have a live website. No need for complicated hosting setups or paying for servers. Perfect for personal blogs and portfolios.
+                <br><br>
+                It's the simplicity that wins me over. Write your code, commit, push—done. Your site is live. For someone who just wants to share their thoughts without the overhead of managing servers or databases, it's perfect. The integration with Git means version control is built right in.
+            </div>
+            <div class="letter-footer">
+                <span class="tag">technical</span>
+                <button class="read-more" onclick="toggleLetter(this)">Read More →</button>
+            </div>
+        </article>
         
-        <div class="post" onclick="this.querySelector('.content').classList.toggle('expanded')">
-            <div class="meta"><span>blog no #1</span><span>Dec 1, 2025</span></div>
-            <div class="title">My Blogging Journey Begins</div>
-            <div class="content">Welcome to my first blog post! I've decided to start a simple blog to share my thoughts, experiences, and learnings. This website is intentionally minimal - just me, my words, and a clean interface. Looking forward to this journey!</div>
-            <span class="tag">intro</span>
-        </div>
-        
-    </div>
+        <article class="letter">
+            <div class="letter-header">
+                <span class="letter-number">Letter №1</span>
+                <span class="letter-date">December 1, 2025</span>
+            </div>
+            <h2 class="letter-title">My Blogging Journey Begins</h2>
+            <div class="letter-body">
+                Welcome to my first blog post! I've decided to start a simple blog to share my thoughts, experiences, and learnings. This website is intentionally minimal—just me, my words, and a clean interface. Looking forward to this journey!
+                <br><br>
+                There's something liberating about having a space that's entirely your own. No algorithms deciding what gets seen, no character limits constraining your thoughts. Just a blank page and the freedom to fill it however you want.
+            </div>
+            <div class="letter-footer">
+                <span class="tag">personal</span>
+                <button class="read-more" onclick="toggleLetter(this)">Read More →</button>
+            </div>
+        </article>
+    </section>
+    
+    <footer>
+        © 2025 miqim · crafted with care
+    </footer>
+    
+    <script>
+        function toggleLetter(btn) {
+            const body = btn.closest('.letter').querySelector('.letter-body');
+            const isExpanded = body.classList.contains('expanded');
+            
+            body.classList.toggle('expanded');
+            btn.textContent = isExpanded ? 'Read More →' : '← Read Less';
+        }
+    </script>
 </body>
 </html>
