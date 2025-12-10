@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miqim's blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0f0f0f;
+            color: #e4e4e4;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container { max-width: 700px; margin: 0 auto; }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .post {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .post::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .post:hover {
+            border-color: #667eea;
+            transform: translateX(4px);
+        }
+        
+        .post:hover::before { opacity: 1; }
+        
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #fff;
+        }
+        
+        .content {
+            line-height: 1.7;
+            color: #aaa;
+            font-size: 0.9rem;
+            font-weight: 300;
+            max-height: 3.4em;
+            overflow: hidden;
+            transition: max-height 0.3s;
+        }
+        
+        .content.expanded { max-height: 1000px; }
+        
+        .tag {
+            display: inline-block;
+            background: #2a2a2a;
+            color: #667eea;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-top: 0.8rem;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>miqim's blog</h1>
+        
+        <div class="post" onclick="this.querySelector('.content').classList.toggle('expanded')">
+            <div class="meta"><span>blog no #3</span><span>Dec 10, 2025</span></div>
+            <div class="title">The Beauty of Simple Web Design</div>
+            <div class="content">Sometimes the best solutions are the simplest ones. A clean, minimal blog doesn't need complex frameworks or databases - just good old HTML, CSS, and a bit of JavaScript. The beauty of static sites is their reliability and speed. No backend to maintain, no database to worry about.</div>
+            <span class="tag">design</span>
+        </div>
+        
+        <div class="post" onclick="this.querySelector('.content').classList.toggle('expanded')">
+            <div class="meta"><span>blog no #2</span><span>Dec 5, 2025</span></div>
+            <div class="title">Why I Love GitHub Pages</div>
+            <div class="content">GitHub Pages is free, reliable, and incredibly easy to use. Just push your HTML files to a repository, and you have a live website. No need for complicated hosting setups or paying for servers. Perfect for personal blogs and portfolios.</div>
+            <span class="tag">hosting</span>
+        </div>
+        
+        <div class="post" onclick="this.querySelector('.content').classList.toggle('expanded')">
+            <div class="meta"><span>blog no #1</span><span>Dec 1, 2025</span></div>
+            <div class="title">My Blogging Journey Begins</div>
+            <div class="content">Welcome to my first blog post! I've decided to start a simple blog to share my thoughts, experiences, and learnings. This website is intentionally minimal - just me, my words, and a clean interface. Looking forward to this journey!</div>
+            <span class="tag">intro</span>
+        </div>
+        
+    </div>
+</body>
+</html>
