@@ -1,318 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>miqim's letters</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23667eea;stop-opacity:1'/><stop offset='100%' style='stop-color:%23764ba2;stop-opacity:1'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='%230a0a0a'/><text x='50' y='70' font-size='60' font-family='serif' font-weight='600' text-anchor='middle' fill='url(%23grad)'>m</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>miqim's blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
         body {
-            font-family: 'Lora', serif;
+            font-family: 'Inter', sans-serif;
             background: #0a0a0a;
             color: #e0e0e0;
-            line-height: 1.8;
-            overflow-x: hidden;
+            line-height: 1.7;
+            padding: 4rem 1.5rem;
         }
         
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
-            position: relative;
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 2rem;
         }
         
         h1 {
-            font-size: 4.5rem;
-            font-weight: 500;
-            letter-spacing: -1px;
+            font-size: 2.2rem;
+            font-weight: 600;
             color: #fff;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 0.5rem;
         }
         
-        .subtitle {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 300;
-            margin-bottom: 3rem;
-        }
-        
-        .scroll-indicator {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            color: #667eea;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-        
-        .letters-section {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-        
-        .letter {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .letter::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 0;
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-            transition: height 0.4s ease;
-        }
-        
-        .letter:hover {
-            border-color: rgba(102, 126, 234, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.1);
-        }
-        
-        .letter:hover::before {
-            height: 100%;
-        }
-        
-        .letter-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .letter-number {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            color: #667eea;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 500;
-        }
-        
-        .letter-date {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
+        .tagline {
+            font-size: 0.95rem;
             color: #666;
-            font-weight: 300;
         }
         
-        .letter-title {
-            font-size: 1.8rem;
+        article {
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        
+        article:last-of-type {
+            border-bottom: none;
+        }
+        
+        .meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-number {
+            color: #888;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
             font-weight: 600;
             color: #fff;
             margin-bottom: 1.5rem;
             line-height: 1.3;
         }
         
-        .letter-body {
-            font-size: 1.05rem;
+        p {
+            margin-bottom: 1.2rem;
             color: #b0b0b0;
-            line-height: 1.9;
-            max-height: 5.7em;
-            overflow: hidden;
-            position: relative;
-            transition: max-height 0.5s ease;
+            font-size: 1rem;
         }
         
-        .letter-body.expanded {
-            max-height: 3000px;
-        }
-        
-        .letter-body::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3em;
-            background: linear-gradient(transparent, rgba(255, 255, 255, 0.03));
-            opacity: 1;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        
-        .letter-body.expanded::after {
-            opacity: 0;
-        }
-        
-        .letter-footer {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .tag {
-            display: inline-block;
-            background: rgba(102, 126, 234, 0.15);
-            color: #667eea;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(102, 126, 234, 0.2);
-        }
-        
-        .read-more {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #667eea;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            border: none;
-            background: none;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .read-more:hover {
-            color: #764ba2;
-            transform: translateX(4px);
+        em {
+            color: #d0d0d0;
+            font-style: italic;
         }
         
         footer {
             text-align: center;
-            padding: 4rem 2rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
             color: #555;
-            font-weight: 300;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.85rem;
+            margin-top: 3rem;
         }
         
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .letter { padding: 2rem; }
-            .letter-title { font-size: 1.5rem; }
-            .letters-section { padding: 4rem 1.5rem; }
+            body {
+                padding: 2.5rem 1rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>miqim's letters</h1>
-            <div class="subtitle">thoughts & reflections</div>
-            <div class="scroll-indicator">↓ scroll to read</div>
-        </div>
-    </section>
-    
-    <section class="letters-section">
-        <article class="letter">
-            <div class="letter-header">
-                <span class="letter-number">Letter №3</span>
-                <span class="letter-date">December 10, 2025</span>
+    <div class="container">
+        <header>
+            <h1>miqim's blog</h1>
+            <p class="tagline">thoughts & reflections</p>
+        </header>
+        
+        <!-- START: Copy from here to add new blogs -->
+        
+        <article>
+            <div class="meta">
+                <span class="blog-number">blog #2</span>
+                <span>December 11, 2025</span>
             </div>
-            <h2 class="letter-title">Poor People's Peace, Sleep You Crazy One</h2>
-            <div class="letter-body">
-                The Bangla phrase "goriber shanti ghume re pagla" and its English counterpart <em>poor people's peace sleep you crazy one</em> capture the fragile rest of those who live under constant pressure. It feels like something said at the end of a long day, half joking, half tired, when someone knows sleep is the only peace left.
-                <br><br>
-                The line paints a picture of a small room, a creaking fan, and worries in the corners and yet someone saying: just sleep, you fool, that is all the peace we get. There is no anger, only a tired familiarity with struggle. Sleep becomes a temporary shelter from stress, the only moment the mind can drift free.
-                <br><br>
-                Saying "re pagla" adds a touch of humor, a playful honesty showing how people laugh at their own hardship to survive it. This phrase conveys the resilience of the poor, the irony of finding peace only in sleep, and the quiet acceptance that tomorrow will demand the same endurance again.
-            </div>
-            <div class="letter-footer">
-                <span class="tag">reflection</span>
-                <button class="read-more" onclick="toggleLetter(this)">Read More →</button>
-            </div>
+            <h2>Why Degoogling Matters: Protect Your Privacy</h2>
+            <p>We live in a world where Google has its hands in almost everything we do online: from searches and emails to maps and even our smartphones. But this convenience comes at a hidden cost: <strong>our privacy</strong>. The more we use Google, the more it collects data about us: our search history, location, even the content of our emails. This information is stored, analyzed, and used for targeted ads, giving Google significant control over our personal lives.</p>
+            <p><strong>Degoogling</strong> is about reducing our dependence on Google and finding alternatives that give us more control over our data. It's about choosing services that prioritize privacy and allow us to live more independently in the digital world.</p>
+            <p>Many people are starting to wake up to the fact that Google tracks nearly everything they do online. The data they collect doesn't just help show personalized ads; it builds a detailed profile of you. This isn't just about your search queries. Google also knows where you go, who you talk to, and what you like. It's a level of tracking that goes beyond what many realize.</p>
+            <p>By degoogling, you can take steps to protect your <strong>digital privacy</strong>. You get to choose how much information you want to share and with whom. It's also about <strong>supporting better alternatives</strong> that respect your rights, like using services that are open-source, secure, and transparent.</p>
+            <p>For example, switching to email services like <strong>ProtonMail</strong> or <strong>Tutanota</strong> instead of Gmail, or using maps like <strong>OpenStreetMap</strong> instead of Google Maps, puts you in control of your own data.</p>
+            <p>In today's connected world, it's easy to overlook how much we give away to big tech companies like Google. But I believe it's crucial that we start taking small steps to protect our privacy. <strong>Degoogling isn't about rejecting technology, but about using it more responsibly.</strong> We don't need to cut ourselves off from the digital world entirely; we just need to make smarter choices about the tools we use.</p>
+            <p>Choosing privacy-respecting alternatives might take a little time to get used to, but the peace of mind it brings is worth it. The more we use services that care about our privacy, the more we push back against the growing trend of surveillance and data exploitation.</p>
+            <p>At the end of the day, it's all about <strong>reclaiming control</strong> over your personal information and ensuring that your online life remains your own.</p>
         </article>
         
-        <article class="letter">
-            <div class="letter-header">
-                <span class="letter-number">Letter №2</span>
-                <span class="letter-date">December 5, 2025</span>
+        <article>
+            <div class="meta">
+                <span class="blog-number">blog #1</span>
+                <span>December 10, 2025</span>
             </div>
-            <h2 class="letter-title">Why I Love GitHub Pages</h2>
-            <div class="letter-body">
-                GitHub Pages is free, reliable, and incredibly easy to use. Just push your HTML files to a repository, and you have a live website. No need for complicated hosting setups or paying for servers. Perfect for personal blogs and portfolios.
-                <br><br>
-                It's the simplicity that wins me over. Write your code, commit, push—done. Your site is live. For someone who just wants to share their thoughts without the overhead of managing servers or databases, it's perfect. The integration with Git means version control is built right in.
-            </div>
-            <div class="letter-footer">
-                <span class="tag">technical</span>
-                <button class="read-more" onclick="toggleLetter(this)">Read More →</button>
-            </div>
+            <h2>Poor People's Peace, Sleep You Crazy One</h2>
+            <p>The Bangla phrase "goriber shanti ghume re pagla" and its English counterpart <em>poor people's peace sleep you crazy one</em> capture the fragile rest of those who live under constant pressure. It feels like something said at the end of a long day, half joking, half tired, when someone knows sleep is the only peace left.</p>
+            <p>The line paints a picture of a small room, a creaking fan, and worries in the corners and yet someone saying: just sleep, you fool, that is all the peace we get. There is no anger, only a tired familiarity with struggle. Sleep becomes a temporary shelter from stress, the only moment the mind can drift free.</p>
+            <p>Saying "re pagla" adds a touch of humor, a playful honesty showing how people laugh at their own hardship to survive it. This phrase conveys the resilience of the poor, the irony of finding peace only in sleep, and the quiet acceptance that tomorrow will demand the same endurance again.</p>
         </article>
         
-        <article class="letter">
-            <div class="letter-header">
-                <span class="letter-number">Letter №1</span>
-                <span class="letter-date">December 1, 2025</span>
+        <!-- END: Copy to here -->
+        
+        <!-- 
+        
+        ═══════════════════════════════════════════════════════
+        HOW TO ADD NEW BLOGS:
+        ═══════════════════════════════════════════════════════
+        
+        1. Copy everything between the START and END comments above
+        2. Paste it right here (or above existing articles for newest first)
+        3. Update these fields:
+           - blog-number: Change #1 to #2, #3, etc.
+           - date: Update to your new date
+           - h2: Change the title
+           - p: Write your new paragraphs
+        
+        EXAMPLE:
+        
+        <article>
+            <div class="meta">
+                <span class="blog-number">blog #2</span>
+                <span>December 15, 2025</span>
             </div>
-            <h2 class="letter-title">My Blogging Journey Begins</h2>
-            <div class="letter-body">
-                Welcome to my first blog post! I've decided to start a simple blog to share my thoughts, experiences, and learnings. This website is intentionally minimal—just me, my words, and a clean interface. Looking forward to this journey!
-                <br><br>
-                There's something liberating about having a space that's entirely your own. No algorithms deciding what gets seen, no character limits constraining your thoughts. Just a blank page and the freedom to fill it however you want.
-            </div>
-            <div class="letter-footer">
-                <span class="tag">personal</span>
-                <button class="read-more" onclick="toggleLetter(this)">Read More →</button>
-            </div>
+            <h2>Your New Blog Title Here</h2>
+            <p>Your first paragraph goes here...</p>
+            <p>Your second paragraph goes here...</p>
+            <p>Add as many paragraphs as you need!</p>
         </article>
-    </section>
-    
-    <footer>
-        © 2025 miqim · crafted with care
-    </footer>
-    
-    <script>
-        function toggleLetter(btn) {
-            const body = btn.closest('.letter').querySelector('.letter-body');
-            const isExpanded = body.classList.contains('expanded');
-            
-            body.classList.toggle('expanded');
-            btn.textContent = isExpanded ? 'Read More →' : '← Read Less';
-        }
-    </script>
+        
+        ═══════════════════════════════════════════════════════
+        
+        -->
+        
+        <footer>
+            © 2025 miqim
+        </footer>
+    </div>
 </body>
 </html>
