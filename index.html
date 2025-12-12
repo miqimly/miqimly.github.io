@@ -13,11 +13,17 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Georgia', serif;
             background: #0a0a0a;
             color: #e0e0e0;
-            line-height: 1.7;
+            line-height: 1.8;
             padding: 4rem 1.5rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        body.light-mode {
+            background: #ffffff;
+            color: #1a1a1a;
         }
         
         .container {
@@ -29,6 +35,11 @@
             margin-bottom: 4rem;
             border-bottom: 1px solid #222;
             padding-bottom: 2rem;
+            position: relative;
+        }
+        
+        body.light-mode header {
+            border-bottom: 1px solid #e0e0e0;
         }
         
         h1 {
@@ -38,15 +49,55 @@
             margin-bottom: 0.5rem;
         }
         
+        body.light-mode h1 {
+            color: #000;
+        }
+        
         .tagline {
             font-size: 0.95rem;
             color: #666;
+        }
+        
+        body.light-mode .tagline {
+            color: #888;
+        }
+        
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .theme-toggle:hover {
+            background: #2a2a2a;
+        }
+        
+        body.light-mode .theme-toggle {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            color: #1a1a1a;
+        }
+        
+        body.light-mode .theme-toggle:hover {
+            background: #e8e8e8;
         }
         
         article {
             margin-bottom: 4rem;
             padding-bottom: 4rem;
             border-bottom: 1px solid #1a1a1a;
+        }
+        
+        body.light-mode article {
+            border-bottom: 1px solid #e8e8e8;
         }
         
         article:last-of-type {
@@ -61,9 +112,17 @@
             margin-bottom: 1.5rem;
         }
         
+        body.light-mode .meta {
+            color: #888;
+        }
+        
         .blog-number {
             color: #888;
             font-weight: 600;
+        }
+        
+        body.light-mode .blog-number {
+            color: #666;
         }
         
         h2 {
@@ -74,10 +133,18 @@
             line-height: 1.3;
         }
         
+        body.light-mode h2 {
+            color: #000;
+        }
+        
         p {
             margin-bottom: 1.2rem;
             color: #b0b0b0;
             font-size: 1rem;
+        }
+        
+        body.light-mode p {
+            color: #444;
         }
         
         em {
@@ -85,11 +152,27 @@
             font-style: italic;
         }
         
+        body.light-mode em {
+            color: #333;
+        }
+        
+        strong {
+            color: #e0e0e0;
+        }
+        
+        body.light-mode strong {
+            color: #1a1a1a;
+        }
+        
         footer {
             text-align: center;
             color: #555;
             font-size: 0.85rem;
             margin-top: 3rem;
+        }
+        
+        body.light-mode footer {
+            color: #999;
         }
         
         @media (max-width: 768px) {
@@ -104,6 +187,13 @@
             h2 {
                 font-size: 1.4rem;
             }
+            
+            .theme-toggle {
+                position: static;
+                margin-top: 1rem;
+                display: block;
+                width: fit-content;
+            }
         }
     </style>
 </head>
@@ -112,9 +202,26 @@
         <header>
             <h1>miqim's blog</h1>
             <p class="tagline">thoughts & reflections</p>
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <span class="theme-text">☀️ Light Mode</span>
+            </button>
         </header>
         
         <!-- START: Copy from here to add new blogs -->
+        
+        <article>
+            <div class="meta">
+                <span class="blog-number">blog #4</span>
+                <span>December 12, 2025</span>
+            </div>
+            <h2>The Flaws of Ranked-Based University Admissions: My Struggle with Bangladesh's System</h2>
+            <p>The ranked-based admission system in Bangladesh's public universities is deeply flawed, leaving many students feeling trapped and frustrated. Instead of allowing students to pursue their interests, universities assign them to programs based solely on their entrance exam scores. As a result, many students end up studying subjects they have no passion for, simply because their exam marks didn't qualify them for their first-choice program.</p>
+            <p>For example, after months of preparation for the university entrance exams, students who scored well in the test may find themselves placed in an unexpected program like footwear, leather, or soil science, even though their true passion lies in technology or computer science. This is exactly where my frustration comes from. I spent months after my 12th grade board exams immersed in the world of Linux, coding, and PC customization (known as "ricing"), skills I thought would lead me to a career in tech. But when the admission results came out, I found myself stuck in a subject I had little interest in.</p>
+            <p>What makes this system even more frustrating is the lack of flexibility it offers. It doesn't consider the real-world skills students acquire on their own, skills that are often more valuable than traditional classroom knowledge. For me, the time I spent learning Linux and working on tech projects outside of school felt like a waste when it didn't count for anything in the admission process. Instead of being able to pursue what I loved, I was left with a feeling of wasted time, all because my exam score didn't match up with my dream field.</p>
+            <p>The system needs change. It's high time for an admission process that values personal growth, creativity, and self-directed learning, instead of locking students into predetermined paths based on a single test. If universities allowed for more flexibility, like the option to explore different fields before committing to one, it would reduce the pressure on students and help them find their true calling.</p>
+            <p>In many other countries, university admission processes are more flexible and holistic. For example, in the United States, students can apply to universities with a combination of their high school grades, SAT/ACT scores, extracurricular activities, essays, and letters of recommendation. This system allows students to showcase their individual strengths, whether they're great in academics, sports, arts, or have unique life experiences. In Europe, countries like Germany and the Netherlands offer more open and accessible university options, where students have the ability to switch programs or explore multiple disciplines during their early years of study. Even in countries like Canada and Australia, the focus is often on a more well-rounded evaluation rather than just a single exam result.</p>
+            <p>In these countries, students tend to feel more in control of their future, and the process is often seen as fairer and more reflective of their abilities and passions. This contrast highlights the shortcomings of Bangladesh's admission system, where rigid entrance exams leave many students frustrated and uncertain about their academic futures. Until the system in Bangladesh evolves to consider a more flexible and holistic approach, many students will continue to face the pressure of choosing between an academic track they don't want and a future they don't believe in.</p>
+        </article>
         
         <article>
             <div class="meta">
@@ -163,40 +270,34 @@
         
         <!-- END: Copy to here -->
         
-        <!-- 
-        
-        ═══════════════════════════════════════════════════════
-        HOW TO ADD NEW BLOGS:
-        ═══════════════════════════════════════════════════════
-        
-        1. Copy everything between the START and END comments above
-        2. Paste it right here (or above existing articles for newest first)
-        3. Update these fields:
-           - blog-number: Change #1 to #2, #3, etc.
-           - date: Update to your new date
-           - h2: Change the title
-           - p: Write your new paragraphs
-        
-        EXAMPLE:
-        
-        <article>
-            <div class="meta">
-                <span class="blog-number">blog #2</span>
-                <span>December 15, 2025</span>
-            </div>
-            <h2>Your New Blog Title Here</h2>
-            <p>Your first paragraph goes here...</p>
-            <p>Your second paragraph goes here...</p>
-            <p>Add as many paragraphs as you need!</p>
-        </article>
-        
-        ═══════════════════════════════════════════════════════
-        
-        -->
-        
         <footer>
             © 2025 miqim
         </footer>
     </div>
+    
+    <script>
+        // Check for saved theme preference or default to dark mode
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        const themeText = document.querySelector('.theme-text');
+        
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeText.textContent = '🌙 Dark Mode';
+        }
+        
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            
+            let theme = 'dark';
+            if (document.body.classList.contains('light-mode')) {
+                theme = 'light';
+                themeText.textContent = '🌙 Dark Mode';
+            } else {
+                themeText.textContent = '☀️ Light Mode';
+            }
+            
+            localStorage.setItem('theme', theme);
+        }
+    </script>
 </body>
 </html>
