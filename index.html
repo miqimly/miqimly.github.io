@@ -4,300 +4,460 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>miqim's blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --text-dim: #888888;
+            --accent: #7aa2f7;
+            --border: #1a1a1a;
+        }
+
+        body.light {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --text-dim: #666666;
+            --accent: #2563eb;
+            --border: #e5e5e5;
+        }
+
         body {
-            font-family: 'Georgia', serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            line-height: 1.8;
-            padding: 4rem 1.5rem;
+            font-family: Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
             transition: background 0.3s, color 0.3s;
-        }
-        
-        body.light-mode {
-            background: #ffffff;
-            color: #1a1a1a;
-        }
-        
-        .container {
-            max-width: 720px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 4rem 2rem;
         }
-        
+
         header {
             margin-bottom: 4rem;
-            border-bottom: 1px solid #222;
-            padding-bottom: 2rem;
-            position: relative;
         }
-        
-        body.light-mode header {
-            border-bottom: 1px solid #e0e0e0;
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
         }
-        
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #fff;
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--accent);
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 0;
+            margin-left: auto;
+            transition: color 0.2s;
+        }
+
+        .theme-btn:hover {
+            color: var(--accent);
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+            animation: fade 0.3s;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .bio {
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 650px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.2s;
+            width: fit-content;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: normal;
+            margin: 3rem 0 1.5rem 0;
+            color: var(--text-dim);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .item {
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .item:hover {
+            border-color: var(--accent);
+        }
+
+        .item-title {
+            color: var(--accent);
             margin-bottom: 0.5rem;
         }
-        
-        body.light-mode h1 {
-            color: #000;
-        }
-        
-        .tagline {
+
+        .item-desc {
+            color: var(--text-dim);
             font-size: 0.95rem;
-            color: #666;
+            line-height: 1.5;
         }
-        
-        body.light-mode .tagline {
-            color: #888;
-        }
-        
-        .theme-toggle {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            color: #e0e0e0;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+
+        .wallpaper {
+            border: 1px solid var(--border);
+            height: 200px;
+            overflow: hidden;
             cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .wallpaper:hover {
+            border-color: var(--accent);
+        }
+
+        .wallpaper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post {
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .post:hover {
+            border-color: var(--accent);
+        }
+
+        .post-title {
+            color: var(--accent);
+            margin-bottom: 0.3rem;
+        }
+
+        .post-date {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .post-desc {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .post-full {
+            display: none;
+            line-height: 1.8;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .post-full.show {
+            display: block;
+        }
+
+        .post-full p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .post-full strong {
+            color: var(--accent);
+        }
+
+        .read-more {
+            color: var(--accent);
             font-size: 0.9rem;
-            transition: all 0.3s;
+            margin-top: 0.5rem;
+            display: inline-block;
         }
-        
-        .theme-toggle:hover {
-            background: #2a2a2a;
-        }
-        
-        body.light-mode .theme-toggle {
-            background: #f5f5f5;
-            border: 1px solid #ddd;
-            color: #1a1a1a;
-        }
-        
-        body.light-mode .theme-toggle:hover {
-            background: #e8e8e8;
-        }
-        
-        article {
-            margin-bottom: 4rem;
-            padding-bottom: 4rem;
-            border-bottom: 1px solid #1a1a1a;
-        }
-        
-        body.light-mode article {
-            border-bottom: 1px solid #e8e8e8;
-        }
-        
-        article:last-of-type {
-            border-bottom: none;
-        }
-        
-        .meta {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-        
-        body.light-mode .meta {
-            color: #888;
-        }
-        
-        .blog-number {
-            color: #888;
-            font-weight: 600;
-        }
-        
-        body.light-mode .blog-number {
-            color: #666;
-        }
-        
-        h2 {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-        
-        body.light-mode h2 {
-            color: #000;
-        }
-        
-        p {
-            margin-bottom: 1.2rem;
-            color: #b0b0b0;
-            font-size: 1rem;
-        }
-        
-        body.light-mode p {
-            color: #444;
-        }
-        
-        em {
-            color: #d0d0d0;
-            font-style: italic;
-        }
-        
-        body.light-mode em {
-            color: #333;
-        }
-        
-        strong {
-            color: #e0e0e0;
-        }
-        
-        body.light-mode strong {
-            color: #1a1a1a;
-        }
-        
-        footer {
-            text-align: center;
-            color: #555;
-            font-size: 0.85rem;
-            margin-top: 3rem;
-        }
-        
-        body.light-mode footer {
-            color: #999;
-        }
-        
-        @media (max-width: 768px) {
+
+        @media (max-width: 600px) {
             body {
-                padding: 2.5rem 1rem;
+                padding: 2rem 1rem;
             }
-            
-            h1 {
-                font-size: 1.8rem;
+
+            nav {
+                flex-wrap: wrap;
             }
-            
-            h2 {
-                font-size: 1.4rem;
-            }
-            
-            .theme-toggle {
-                position: static;
-                margin-top: 1rem;
-                display: block;
-                width: fit-content;
+
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>miqim's blog</h1>
-            <p class="tagline">thoughts & reflections</p>
-            <button class="theme-toggle" onclick="toggleTheme()">
-                <span class="theme-text">☀️ Light Mode</span>
+    <header>
+        <div class="title">miqim's blog</div>
+        <nav>
+            <a href="#home" onclick="show('home')">home</a>
+            <a href="#blog" onclick="show('blog')">blog</a>
+            <a href="#projects" onclick="show('projects')">projects</a>
+            <a href="#wallpapers" onclick="show('wallpapers')">wallpapers</a>
+            <button class="theme-btn" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
             </button>
-        </header>
-        
-        <!-- START: Copy from here to add new blogs -->
-        
-        <article>
-            <div class="meta">
-                <span class="blog-number">blog #4</span>
-                <span>December 12, 2025</span>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="active">
+            <p class="bio">
+                Nerd who splits time between computers and people's inner worlds. Interested in type systems, programming language design, non-biology ideas, and Linux-related things from daily driving to deep tinkering and customization, living mostly inside Neovim. I enjoy building calm communities and low-pressure social spaces where people can exist without performing. Drawn to systems, both technical and human, and how they fail, adapt, and recover. Soft creature. Slightly unstable in a harmless way.
+            </p>
+
+            <div class="links">
+                <a href="https://github.com/tahfizhabib" target="_blank">
+                    <i class="fab fa-github"></i> @tahfizhabib
+                </a>
+                <a href="mailto:info@miqimblog.xyz">
+                    <i class="fas fa-envelope"></i> info@miqimblog.xyz
+                </a>
+                <a href="https://instagram.com/miqimyeah" target="_blank">
+                    <i class="fab fa-instagram"></i> @miqimyeah
+                </a>
             </div>
-            <h2>The Flaws of Ranked-Based University Admissions: My Struggle with Bangladesh's System</h2>
-            <p>The ranked-based admission system in Bangladesh's public universities is deeply flawed, leaving many students feeling trapped and frustrated. Instead of allowing students to pursue their interests, universities assign them to programs based solely on their entrance exam scores. As a result, many students end up studying subjects they have no passion for, simply because their exam marks didn't qualify them for their first-choice program.</p>
-            <p>For example, after months of preparation for the university entrance exams, students who scored well in the test may find themselves placed in an unexpected program like footwear, leather, or soil science, even though their true passion lies in technology or computer science. This is exactly where my frustration comes from. I spent months after my 12th grade board exams immersed in the world of Linux, coding, and PC customization (known as "ricing"), skills I thought would lead me to a career in tech. But when the admission results came out, I found myself stuck in a subject I had little interest in.</p>
-            <p>What makes this system even more frustrating is the lack of flexibility it offers. It doesn't consider the real-world skills students acquire on their own, skills that are often more valuable than traditional classroom knowledge. For me, the time I spent learning Linux and working on tech projects outside of school felt like a waste when it didn't count for anything in the admission process. Instead of being able to pursue what I loved, I was left with a feeling of wasted time, all because my exam score didn't match up with my dream field.</p>
-            <p>The system needs change. It's high time for an admission process that values personal growth, creativity, and self-directed learning, instead of locking students into predetermined paths based on a single test. If universities allowed for more flexibility, like the option to explore different fields before committing to one, it would reduce the pressure on students and help them find their true calling.</p>
-            <p>In many other countries, university admission processes are more flexible and holistic. For example, in the United States, students can apply to universities with a combination of their high school grades, SAT/ACT scores, extracurricular activities, essays, and letters of recommendation. This system allows students to showcase their individual strengths, whether they're great in academics, sports, arts, or have unique life experiences. In Europe, countries like Germany and the Netherlands offer more open and accessible university options, where students have the ability to switch programs or explore multiple disciplines during their early years of study. Even in countries like Canada and Australia, the focus is often on a more well-rounded evaluation rather than just a single exam result.</p>
-            <p>In these countries, students tend to feel more in control of their future, and the process is often seen as fairer and more reflective of their abilities and passions. This contrast highlights the shortcomings of Bangladesh's admission system, where rigid entrance exams leave many students frustrated and uncertain about their academic futures. Until the system in Bangladesh evolves to consider a more flexible and holistic approach, many students will continue to face the pressure of choosing between an academic track they don't want and a future they don't believe in.</p>
-        </article>
-        
-        <article>
-            <div class="meta">
-                <span class="blog-number">blog #3</span>
-                <span>December 11, 2025</span>
+        </section>
+
+        <section id="blog">
+            <h2>blog</h2>
+            
+            <div class="post" onclick="togglePost(this)">
+                <div class="post-date">blog #4 • December 13, 2025</div>
+                <div class="post-title">Mastering Code and Configs: Why Neovim is the Best</div>
+                <div class="post-desc">Neovim has become my go-to editor, not just because it is fast or minimalist. For me, it embodies a philosophy that matches how I work, learn, and experiment in the terminal...</div>
+                <div class="read-more">read more →</div>
+                <div class="post-full">
+                    <p>Neovim has become my go-to editor, not just because it is fast or minimalist. For me, it embodies a philosophy that matches how I work, learn, and experiment in the terminal. It is about control, efficiency, and the joy of shaping your environment exactly the way you want it. Neovim is not just a text editor, it is a playground for customization, scripting, and performance optimization.</p>
+                    <p>David Heinemeier Hansson, the creator of Ruby on Rails, often emphasizes developer happiness and simplicity. He advocates for tools that make programmers productive without unnecessary complexity. Neovim aligns perfectly with this mindset: it gives you a simple core while empowering you to extend, tweak, and optimize every part of your workflow. The learning curve may be steep, but the reward is unmatched control over your environment and a deeper understanding of your tools.</p>
+                    <p>From my perspective, using Neovim is like having a personal workstation that grows with you. You start with basic editing, then slowly integrate plugins, configure key mappings, and automate repetitive tasks with Lua scripts. This gradual mastery is satisfying, and every tweak improves efficiency. Unlike other editors that try to do everything for you, Neovim trusts the developer to decide what matters, allowing for minimal distractions and maximum focus.</p>
+                    <p>One of the biggest advantages for me is how Neovim makes editing configurations easier than ever. Whether I am tweaking my Linux rices, adjusting scripts, or refining complex dotfiles, everything feels faster and more intuitive. With powerful search, multi-file editing, and advanced key mappings, I can jump between configs, make changes, and test them instantly. This has turned what used to be tedious and error-prone work into a smooth, almost enjoyable experience.</p>
+                    <p>Other developers praise Neovim for its speed and modal editing, highlighting that Vim-inspired workflows encourage a different kind of thinking, where every action is deliberate and every keypress meaningful. This approach promotes muscle memory and productivity, especially for those who spend hours in code every day. You become not just a user of the editor, but a co-creator of your coding environment.</p>
+                    <p>For me, Neovim represents more than just coding efficiency. It is a mindset. It encourages curiosity, experimentation, and a hands-on approach to problem-solving. When I configure a plugin or script a new command, I am learning both the editor and the underlying system. It is this philosophy of understanding and mastery that resonates with my Linux-focused workflow. Neovim is lightweight, integrates beautifully with terminal-based tools, and fits naturally into a system-optimization mindset, whether I am ricing my Linux setup, automating tasks, or managing multiple projects.</p>
+                    <p>In short, Neovim is not for everyone, but it is perfect for those who value control, minimalism, and continuous improvement. It is not just about editing text, it is about shaping your workflow, enhancing productivity, and building a system that works for you rather than against you. For me, it has become indispensable, the centerpiece of a highly optimized, intentional development environment that reflects both personal style and professional efficiency.</p>
+                </div>
             </div>
-            <h2>Privacy-Focused Browsers & Search Engines: A Better Way to Browse</h2>
-            <p>In the age of surveillance and corporate control, many users are searching for alternatives to mainstream browsers and search engines that prioritize privacy. Here's a roundup of some of the best options that help keep your data safe and free from political or corporate interference.</p>
-            <p><strong>Vivaldi</strong> is an employee-owned browser that stands out for its independence from big tech. Built on Chromium, it uses its own sync system, so Google doesn't have access to your data. Vivaldi offers strong privacy features and a highly customizable user experience, making it a top choice for anyone looking to escape Google's grasp.</p>
-            <p><strong>Brave</strong> blocks ads and trackers by default, giving you a faster, safer browsing experience. It uses its own search engine and rewards users with cryptocurrency for opting into privacy-respecting ads. Though based on Chromium, Brave operates independently from Google and Microsoft, making it one of the most privacy-friendly mainstream options.</p>
-            <p><strong>Firefox</strong>, an open-source, nonprofit browser, has always been a strong advocate for user privacy. Paired with search engines like <strong>Qwant</strong> or <strong>Startpage</strong>, it offers a highly secure, customizable browsing experience. Firefox's strong extension ecosystem further boosts its privacy protection.</p>
-            <p>For users who prefer a lightweight and privacy-focused option, <strong>Zen Browser</strong> is a solid pick. While it's a fork of Firefox, Zen offers a clean, minimalist design that's a bit more feature-rich compared to other privacy browsers. Its interface draws inspiration from ARC Browser, giving it a modern look while focusing on reducing data collection.</p>
-            <p><strong>Helium Browser</strong> is another privacy-first browser, designed for speed and minimal data collection. It's ideal for users looking for a simple, lightweight browsing experience without sacrificing security.</p>
-            <p>If you prefer the look and feel of Chromium, <strong>Ungoogled Chromium</strong> offers a great solution by stripping all Google services, so you get the Chromium experience without the data tracking. Similarly, <strong>Supremium</strong> is a Canadian fork of Chromium that reduces tracking while maintaining web compatibility. <strong>Vanadium</strong>, developed by the F-Droid team, removes Google services for an even more privacy-respecting browsing experience. <strong>Trivalent</strong>, a fork of Vanadium, takes things a step further, focusing on encryption and minimizing corporate influence.</p>
-            <p>When it comes to search engines, <strong>Startpage</strong> offers Google results but without the tracking, making it a great option for users who want the power of Google search without giving up their privacy. <strong>Qwant</strong>, based in Europe, is another excellent choice, as it doesn't track users and is gradually developing its own independent search index, reducing reliance on Google and Bing.</p>
-            <p><strong>Brave Search</strong>, a part of the Brave ecosystem, provides a truly independent search engine that doesn't track users or collect data. It's built to be private by design and is perfect for those who want complete freedom from surveillance. <strong>DuckDuckGo</strong>, while popular for its privacy features, still relies on Bing for search results, and Microsoft (which owns Bing) has known connections to Israel, particularly in the tech and defense sectors.</p>
-            <p>If you're serious about online privacy, browsers like Vivaldi, Brave, Firefox, Zen, Helium, Ungoogled Chromium, and Trivalent provide solid protection against surveillance. Pair these browsers with search engines like Startpage, Qwant, or Brave Search for maximum privacy. As someone who avoids Microsoft's influence, I personally use <strong>Floorp</strong> (a Firefox fork) for my main system and <strong>Helium Browser</strong> for my secondary one.</p>
-        </article>
-        
-        <article>
-            <div class="meta">
-                <span class="blog-number">blog #2</span>
-                <span>December 11, 2025</span>
+
+            <div class="post" onclick="togglePost(this)">
+                <div class="post-date">blog #3 • December 12, 2025</div>
+                <div class="post-title">The Flaws of Ranked-Based University Admissions: My Struggle with Bangladesh's System</div>
+                <div class="post-desc">The ranked-based admission system in Bangladesh's public universities is deeply flawed, leaving many students feeling trapped and frustrated...</div>
+                <div class="read-more">read more →</div>
+                <div class="post-full">
+                    <p>The ranked-based admission system in Bangladesh's public universities is deeply flawed, leaving many students feeling trapped and frustrated. Instead of allowing students to pursue their interests, universities assign them to programs based solely on their entrance exam scores. As a result, many students end up studying subjects they have no passion for, simply because their exam marks didn't qualify them for their first-choice program.</p>
+                    <p>For example, after months of preparation for the university entrance exams, students who scored well in the test may find themselves placed in an unexpected program like footwear, leather, or soil science, even though their true passion lies in technology or computer science. This is exactly where my frustration comes from. I spent months after my 12th grade board exams immersed in the world of Linux, coding, and PC customization (known as "ricing"), skills I thought would lead me to a career in tech. But when the admission results came out, I found myself stuck in a subject I had little interest in.</p>
+                    <p>What makes this system even more frustrating is the lack of flexibility it offers. It doesn't consider the real-world skills students acquire on their own, skills that are often more valuable than traditional classroom knowledge. For me, the time I spent learning Linux and working on tech projects outside of school felt like a waste when it didn't count for anything in the admission process. Instead of being able to pursue what I loved, I was left with a feeling of wasted time, all because my exam score didn't match up with my dream field.</p>
+                    <p>The system needs change. It's high time for an admission process that values personal growth, creativity, and self-directed learning, instead of locking students into predetermined paths based on a single test. If universities allowed for more flexibility, like the option to explore different fields before committing to one, it would reduce the pressure on students and help them find their true calling.</p>
+                    <p>In many other countries, university admission processes are more flexible and holistic. For example, in the United States, students can apply to universities with a combination of their high school grades, SAT/ACT scores, extracurricular activities, essays, and letters of recommendation. This system allows students to showcase their individual strengths, whether they're great in academics, sports, arts, or have unique life experiences. In Europe, countries like Germany and the Netherlands offer more open and accessible university options, where students have the ability to switch programs or explore multiple disciplines during their early years of study. Even in countries like Canada and Australia, the focus is often on a more well-rounded evaluation rather than just a single exam result.</p>
+                    <p>In these countries, students tend to feel more in control of their future, and the process is often seen as fairer and more reflective of their abilities and passions. This contrast highlights the shortcomings of Bangladesh's admission system, where rigid entrance exams leave many students frustrated and uncertain about their academic futures. Until the system in Bangladesh evolves to consider a more flexible and holistic approach, many students will continue to face the pressure of choosing between an academic track they don't want and a future they don't believe in.</p>
+                </div>
             </div>
-            <h2>Why Degoogling Matters: Protect Your Privacy</h2>
-            <p>We live in a world where Google has its hands in almost everything we do online: from searches and emails to maps and even our smartphones. But this convenience comes at a hidden cost: <strong>our privacy</strong>. The more we use Google, the more it collects data about us: our search history, location, even the content of our emails. This information is stored, analyzed, and used for targeted ads, giving Google significant control over our personal lives.</p>
-            <p><strong>Degoogling</strong> is about reducing our dependence on Google and finding alternatives that give us more control over our data. It's about choosing services that prioritize privacy and allow us to live more independently in the digital world.</p>
-            <p>Many people are starting to wake up to the fact that Google tracks nearly everything they do online. The data they collect doesn't just help show personalized ads; it builds a detailed profile of you. This isn't just about your search queries. Google also knows where you go, who you talk to, and what you like. It's a level of tracking that goes beyond what many realize.</p>
-            <p>By degoogling, you can take steps to protect your <strong>digital privacy</strong>. You get to choose how much information you want to share and with whom. It's also about <strong>supporting better alternatives</strong> that respect your rights, like using services that are open-source, secure, and transparent.</p>
-            <p>For example, switching to email services like <strong>ProtonMail</strong> or <strong>Tutanota</strong> instead of Gmail, or using maps like <strong>OpenStreetMap</strong> instead of Google Maps, puts you in control of your own data.</p>
-            <p>In today's connected world, it's easy to overlook how much we give away to big tech companies like Google. But I believe it's crucial that we start taking small steps to protect our privacy. <strong>Degoogling isn't about rejecting technology, but about using it more responsibly.</strong> We don't need to cut ourselves off from the digital world entirely; we just need to make smarter choices about the tools we use.</p>
-            <p>Choosing privacy-respecting alternatives might take a little time to get used to, but the peace of mind it brings is worth it. The more we use services that care about our privacy, the more we push back against the growing trend of surveillance and data exploitation.</p>
-            <p>At the end of the day, it's all about <strong>reclaiming control</strong> over your personal information and ensuring that your online life remains your own.</p>
-        </article>
-        
-        <article>
-            <div class="meta">
-                <span class="blog-number">blog #1</span>
-                <span>December 10, 2025</span>
+
+            <div class="post" onclick="togglePost(this)">
+                <div class="post-date">blog #2 • December 11, 2025</div>
+                <div class="post-title">Privacy-Focused Browsers & Search Engines: A Better Way to Browse</div>
+                <div class="post-desc">In the age of surveillance and corporate control, many users are searching for alternatives to mainstream browsers and search engines that prioritize privacy...</div>
+                <div class="read-more">read more →</div>
+                <div class="post-full">
+                    <p>In the age of surveillance and corporate control, many users are searching for alternatives to mainstream browsers and search engines that prioritize privacy. Here's a roundup of some of the best options that help keep your data safe and free from political or corporate interference.</p>
+                    <p><strong>Vivaldi</strong> is an employee-owned browser that stands out for its independence from big tech. Built on Chromium, it uses its own sync system, so Google doesn't have access to your data. Vivaldi offers strong privacy features and a highly customizable user experience, making it a top choice for anyone looking to escape Google's grasp.</p>
+                    <p><strong>Brave</strong> blocks ads and trackers by default, giving you a faster, safer browsing experience. It uses its own search engine and rewards users with cryptocurrency for opting into privacy-respecting ads. Though based on Chromium, Brave operates independently from Google and Microsoft, making it one of the most privacy-friendly mainstream options.</p>
+                    <p><strong>Firefox</strong>, an open-source, nonprofit browser, has always been a strong advocate for user privacy. Paired with search engines like <strong>Qwant</strong> or <strong>Startpage</strong>, it offers a highly secure, customizable browsing experience. Firefox's strong extension ecosystem further boosts its privacy protection.</p>
+                    <p>For users who prefer a lightweight and privacy-focused option, <strong>Zen Browser</strong> is a solid pick. While it's a fork of Firefox, Zen offers a clean, minimalist design that's a bit more feature-rich compared to other privacy browsers. Its interface draws inspiration from ARC Browser, giving it a modern look while focusing on reducing data collection.</p>
+                    <p><strong>Helium Browser</strong> is another privacy-first browser, designed for speed and minimal data collection. It's ideal for users looking for a simple, lightweight browsing experience without sacrificing security.</p>
+                    <p>If you prefer the look and feel of Chromium, <strong>Ungoogled Chromium</strong> offers a great solution by stripping all Google services, so you get the Chromium experience without the data tracking. Similarly, <strong>Supremium</strong> is a Canadian fork of Chromium that reduces tracking while maintaining web compatibility. <strong>Vanadium</strong>, developed by the F-Droid team, removes Google services for an even more privacy-respecting browsing experience. <strong>Trivalent</strong>, a fork of Vanadium, takes things a step further, focusing on encryption and minimizing corporate influence.</p>
+                    <p>When it comes to search engines, <strong>Startpage</strong> offers Google results but without the tracking, making it a great option for users who want the power of Google search without giving up their privacy. <strong>Qwant</strong>, based in Europe, is another excellent choice, as it doesn't track users and is gradually developing its own independent search index, reducing reliance on Google and Bing.</p>
+                    <p><strong>Brave Search</strong>, a part of the Brave ecosystem, provides a truly independent search engine that doesn't track users or collect data. It's built to be private by design and is perfect for those who want complete freedom from surveillance. <strong>DuckDuckGo</strong>, while popular for its privacy features, still relies on Bing for search results, and Microsoft (which owns Bing) has known connections to Israel, particularly in the tech and defense sectors.</p>
+                    <p>If you're serious about online privacy, browsers like Vivaldi, Brave, Firefox, Zen, Helium, Ungoogled Chromium, and Trivalent provide solid protection against surveillance. Pair these browsers with search engines like Startpage, Qwant, or Brave Search for maximum privacy. As someone who avoids Microsoft's influence, I personally use <strong>Floorp</strong> (a Firefox fork) for my main system and <strong>Helium Browser</strong> for my secondary one.</p>
+                </div>
             </div>
-            <h2>Poor People's Peace, Sleep You Crazy One</h2>
-            <p>The Bangla phrase "goriber shanti ghume re pagla" and its English counterpart <em>poor people's peace sleep you crazy one</em> capture the fragile rest of those who live under constant pressure. It feels like something said at the end of a long day, half joking, half tired, when someone knows sleep is the only peace left.</p>
-            <p>The line paints a picture of a small room, a creaking fan, and worries in the corners and yet someone saying: just sleep, you fool, that is all the peace we get. There is no anger, only a tired familiarity with struggle. Sleep becomes a temporary shelter from stress, the only moment the mind can drift free.</p>
-            <p>Saying "re pagla" adds a touch of humor, a playful honesty showing how people laugh at their own hardship to survive it. This phrase conveys the resilience of the poor, the irony of finding peace only in sleep, and the quiet acceptance that tomorrow will demand the same endurance again.</p>
-        </article>
-        
-        <!-- END: Copy to here -->
-        
-        <footer>
-            © 2025 miqim
-        </footer>
-    </div>
-    
+
+            <div class="post" onclick="togglePost(this)">
+                <div class="post-date">blog #1 • December 11, 2025</div>
+                <div class="post-title">Why Degoogling Matters: Protect Your Privacy</div>
+                <div class="post-desc">We live in a world where Google has its hands in almost everything we do online: from searches and emails to maps and even our smartphones...</div>
+                <div class="read-more">read more →</div>
+                <div class="post-full">
+                    <p>We live in a world where Google has its hands in almost everything we do online: from searches and emails to maps and even our smartphones. But this convenience comes at a hidden cost: <strong>our privacy</strong>. The more we use Google, the more it collects data about us: our search history, location, even the content of our emails. This information is stored, analyzed, and used for targeted ads, giving Google significant control over our personal lives.</p>
+                    <p><strong>Degoogling</strong> is about reducing our dependence on Google and finding alternatives that give us more control over our data. It's about choosing services that prioritize privacy and allow us to live more independently in the digital world.</p>
+                    <p>Many people are starting to wake up to the fact that Google tracks nearly everything they do online. The data they collect doesn't just help show personalized ads; it builds a detailed profile of you. This isn't just about your search queries. Google also knows where you go, who you talk to, and what you like. It's a level of tracking that goes beyond what many realize.</p>
+                    <p>By degoogling, you can take steps to protect your <strong>digital privacy</strong>. You get to choose how much information you want to share and with whom. It's also about <strong>supporting better alternatives</strong> that respect your rights, like using services that are open-source, secure, and transparent.</p>
+                    <p>For example, switching to email services like <strong>ProtonMail</strong> or <strong>Tutanota</strong> instead of Gmail, or using maps like <strong>OpenStreetMap</strong> instead of Google Maps, puts you in control of your own data.</p>
+                    <p>In today's connected world, it's easy to overlook how much we give away to big tech companies like Google. But I believe it's crucial that we start taking small steps to protect our privacy. <strong>Degoogling isn't about rejecting technology, but about using it more responsibly.</strong> We don't need to cut ourselves off from the digital world entirely; we just need to make smarter choices about the tools we use.</p>
+                    <p>Choosing privacy-respecting alternatives might take a little time to get used to, but the peace of mind it brings is worth it. The more we use services that care about our privacy, the more we push back against the growing trend of surveillance and data exploitation.</p>
+                    <p>At the end of the day, it's all about <strong>reclaiming control</strong> over your personal information and ensuring that your online life remains your own.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>omarchy themes</h2>
+            <div class="grid">
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/omarchy-vurple-theme','_blank')">
+                    <div class="item-title">Vurple</div>
+                    <div class="item-desc">Purple, glowing, modern Omarchy theme.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/omarchy-azure-theme','_blank')">
+                    <div class="item-title">Azure</div>
+                    <div class="item-desc">Sky-blue minimalist design.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/omarchy-cyanyze-theme','_blank')">
+                    <div class="item-title">Cyanyze</div>
+                    <div class="item-desc">Cyan futuristic UI direction.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/omarchy-artzen-theme','_blank')">
+                    <div class="item-title">Artzen</div>
+                    <div class="item-desc">Animated, minimal red-dark blend.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/omarchy-amberbyte-theme','_blank')">
+                    <div class="item-title">Amberbyte</div>
+                    <div class="item-desc">Ninja-inspired reddish palette.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/omarchy-rustleaf-theme','_blank')">
+                    <div class="item-title">Rustleaf</div>
+                    <div class="item-desc">Gruvbox warmth and modern tones.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/omarchy-crimson-theme','_blank')">
+                    <div class="item-title">Crimson</div>
+                    <div class="item-desc">Deep red, sharp, elegant theme.</div>
+                </div>
+            </div>
+
+            <h3>other projects</h3>
+            <div class="grid">
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/niriha','_blank')">
+                    <div class="item-title">Niriha</div>
+                    <div class="item-desc">Minimal Arch Linux plus Niri WM experience.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/gwfox-css','_blank')">
+                    <div class="item-title">gwfox CSS</div>
+                    <div class="item-desc">Clean Firefox UI and UX redesign.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/Nvidia-Rebirth','_blank')">
+                    <div class="item-title">Nvidia Rebirth</div>
+                    <div class="item-desc">Performance-tuned Nvidia configuration.</div>
+                </div>
+                <div class="item" onclick="window.open('https://github.com/tahfizhabib/emphase-rice','_blank')">
+                    <div class="item-title">Emphase</div>
+                    <div class="item-desc">Clean, aesthetic workflow rice.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wallpapers">
+            <h2>wallpapers</h2>
+            <div class="grid">
+                <div class="wallpaper">
+                    <img src="https://via.placeholder.com/600x400/0a0a0a/7aa2f7?text=Wallpaper" alt="wallpaper">
+                </div>
+                <div class="wallpaper">
+                    <img src="https://via.placeholder.com/600x400/0a0a0a/7aa2f7?text=Wallpaper" alt="wallpaper">
+                </div>
+                <div class="wallpaper">
+                    <img src="https://via.placeholder.com/600x400/0a0a0a/7aa2f7?text=Wallpaper" alt="wallpaper">
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script>
-        // Check for saved theme preference or default to dark mode
-        const currentTheme = localStorage.getItem('theme') || 'dark';
-        const themeText = document.querySelector('.theme-text');
-        
-        if (currentTheme === 'light') {
-            document.body.classList.add('light-mode');
-            themeText.textContent = '🌙 Dark Mode';
-        }
-        
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
+        function togglePost(element) {
+            const full = element.querySelector('.post-full');
+            const desc = element.querySelector('.post-desc');
+            const readMore = element.querySelector('.read-more');
             
-            let theme = 'dark';
-            if (document.body.classList.contains('light-mode')) {
-                theme = 'light';
-                themeText.textContent = '🌙 Dark Mode';
+            if (full.classList.contains('show')) {
+                full.classList.remove('show');
+                desc.style.display = 'block';
+                readMore.textContent = 'read more →';
             } else {
-                themeText.textContent = '☀️ Light Mode';
+                full.classList.add('show');
+                desc.style.display = 'none';
+                readMore.textContent = 'read less ←';
             }
-            
-            localStorage.setItem('theme', theme);
         }
+
+        function show(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(id).classList.add('active');
+            document.querySelector(`a[href="#${id}"]`).classList.add('active');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('light');
+            const icon = document.querySelector('.theme-btn i');
+            icon.className = document.body.classList.contains('light') ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.slice(1) || 'home';
+            show(hash);
+        });
     </script>
 </body>
 </html>
