@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>miqim's blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Google Sans',sans-serif;background:#282828;color:#d5c4a1;line-height:1.6;padding:4rem;max-width:1100px;margin:0 auto;font-size:1.2rem}
+        header{text-align:center;margin-bottom:4rem}
+        h1{font-size:4rem;color:#d3869b;font-weight:700;margin-bottom:.3rem}
+        .tagline{font-size:1.3rem;color:#a89984;margin-bottom:1rem}
+        .ascii{color:#d3869b;font-family:monospace;font-size:.7rem;line-height:1.1;white-space:pre}
+        nav{border-bottom:2px solid #504945;padding-bottom:1rem;margin-bottom:3rem;text-align:center}
+        nav a{color:#d3869b;text-decoration:none;margin:0 1.5rem;font-size:1.3rem;font-weight:700}
+        nav a:hover{color:#b16286}
+        h2{font-size:2.8rem;color:#d3869b;border-bottom:2px solid #d3869b;display:inline-block;padding-bottom:.2rem;margin-bottom:2rem;text-transform:lowercase}
+        .grid{display:grid;grid-template-columns:2fr 1fr;gap:4rem}
+        .content h3{font-size:1.6rem;color:#d3869b;margin:2rem 0 1rem;text-transform:lowercase}
+        .content p{margin-bottom:1.5rem;font-size:1.25rem;line-height:1.7}
+        .content ul{list-style:none;margin-bottom:1.5rem}
+        .content ul li{margin-bottom:.7rem;font-size:1.15rem}
+        .content ul li a{color:#83a598;font-weight:700}
+        .content ul li a:hover{color:#8ec07c}
+        .sidebar section{margin-bottom:2.5rem}
+        .sidebar h3{color:#d3869b;font-size:1.4rem;margin-bottom:1rem;font-weight:700}
+        .stats{color:#a89984}
+        .stats div{margin-bottom:.4rem}
+        .badge{background:#3c3836;color:#d3869b;padding:.3rem .6rem;margin:.2rem;border-radius:2px;font-size:.9rem;display:inline-block}
+        .social a,.support a{display:block;color:#8ec07c;margin-bottom:.5rem;font-size:1.05rem;text-decoration:none}
+        .social a:hover,.support a:hover{color:#b8bb26}
+        @media(max-width:768px){.grid{grid-template-columns:1fr}}
+        footer{text-align:center;margin-top:4rem;padding-top:2rem;border-top:2px solid #504945;color:#a89984;font-size:1rem}
+        footer span{color:#d3869b}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>miqim's blog</h1>
+        <p class="tagline">linux enthusiast, system architect, writer, OSS enthusiast</p>
+        <div class="ascii">
+    _______________
+   /               \
+  /   ___     ___   \
+ |   /   \   /   \   |
+ |   \___/   \___/   |
+  \       _____     /
+   \     \_____/   /
+    \_______________/
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">about</a>
+        <a href="blogs.html">blogs</a>
+        <a href="projects.html">projects</a>
+        <a href="now.html">now</a>
+    </nav>
+
+    <div class="grid">
+        <main class="content">
+            <h2>about</h2>
+            
+            <h3>academics</h3>
+            <p>12th grade done. didn't land a good public uni, wasn't super into it anyway. currently figuring life out and looking for a direction that actually makes sense to me.</p>
+            
+            <h3>personal work</h3>
+            <p>all of my personal work lives in the open. i mostly build small, focused tools to make my own workflow better, and i contribute where i can to projects and ecosystems i genuinely care about.</p>
+            <ul>
+                <li><a href="https://github.com/tahfizhabib/nirifiles">imrose</a> - niri wayland compositor configuration with custom scripts and workflow optimizations</li>
+                <li><a href="https://github.com/tahfizhabib/gwfox-css">gwfox</a> - transparent fluent firefox theme (fork of avkka's work)</li>
+                <li><a href="https://github.com/tahfizhabib/emphase-rice">emphase</a> - minimal desktop rice focusing on clean aesthetics and efficient workflow</li>
+            </ul>
+            
+            <h3>what i care about</h3>
+            <p>i prefer software that is small, clearly scoped, and honest about what it does. tools should be understandable end to end, without hidden complexity or unnecessary abstraction. i value programs that behave predictably, compose well with others, and can be reasoned about by reading the source.</p>
+            
+            <h3>me, briefly</h3>
+            <p>i am a programmer (competent, still learning), a linux user, and someone who prefers working in scripts and editors. i am preparing to begin my undergraduate studies. i write often about topics that interest me. this website is a collection of those interests, including notes, essays, guides, and occasional reflections. my code is hosted on github and codeberg, and in time i hope to publish more formal work under my own name.</p>
+            <p>this site is intentionally minimal. there are no ads, cookies, trackers, or automated scripts. the typefaces used are google sans and jetbrains mono. my journey with linux began in early 2022, and now in my early twenties i continue to refine how i interact with computers and systems. while many people my age have already started full-time work, i remain at home due to personal and environmental circumstances. i live in 🇧🇩, a place i often critique but also care about deeply, where society looks down on those doing nothing and living off their parents.</p>
+            <p>most of my time is spent customizing systems. after years of experimenting with distributions, shells, and environments, i am moving toward building a stable personal system that i understand end to end. my current interests include quickshell and ags, though i am becoming more selective about where i invest my time.</p>
+            <p>i am future-oriented rather than present-focused. i care about making systems simpler, easier to understand, and more useful. i enjoy guiding others, contributing to the wider open-source and software community, and showing that alternative ways of working and thinking are possible. while i currently spend most of my time at home, i expect to begin my bachelor's studies within the next few months and am looking forward to what comes next.</p>
+        </main>
+
+        <aside class="sidebar">
+            <section>
+                <h3>stats</h3>
+                <div class="stats">
+                    <div>words: 12,450</div>
+                    <div>posts: 8</div>
+                    <div>projects: 5</div>
+                </div>
+            </section>
+
+            <section>
+                <h3>support</h3>
+                <div class="support">
+                    <a href="#">ko-fi</a>
+                    <a href="#">buy me a coffee</a>
+                </div>
+            </section>
+
+            <section>
+                <h3>badges</h3>
+                <div>
+                    <span class="badge">arch</span>
+                    <span class="badge">freebsd</span>
+                    <span class="badge">alpine</span>
+                    <span class="badge">neovim</span>
+                    <span class="badge">vim</span>
+                    <span class="badge">free palestine</span>
+                    <span class="badge">bangladesh</span>
+                    <span class="badge">OSS</span>
+                </div>
+            </section>
+
+            <section>
+                <h3>elsewhere</h3>
+                <div class="social">
+                    <a href="https://github.com/tahfizhabib">github/tahfizhabib</a>
+                    <a href="https://mastodon.social/deck/@rakhal">@rakhal on mastodon</a>
+                    <a href="https://twitter.com/miqimyeah">@miqimyeah on twitter</a>
+                    <a href="https://www.instagram.com/miqimyeah/">@miqimyeah on instagram</a>
+                    <a href="mailto:tahfizhabib21@gmail.com">tahfizhabib21@gmail.com</a>
+                    <a href="mailto:tahfizhabib@outlook.com">tahfizhabib@outlook.com</a>
+                </div>
+            </section>
+
+            <section>
+                <h3>webrings</h3>
+                <div class="social">
+                    <a href="#">nixers webring</a>
+                    <a href="#">linux users webring</a>
+                    <a href="#">indieweb webring</a>
+                    <a href="#">minimal web club</a>
+                    <a href="#">rice enthusiasts</a>
+                    <a href="#">terminal lovers</a>
+                    <a href="#">foss advocate ring</a>
+                    <a href="#">wayland users ring</a>
+                    <a href="#">neovim users webring</a>
+                    <a href="#">tiling wm webring</a>
+                    <a href="#">dotfiles webring</a>
+                    <a href="#">personal sites webring</a>
+                </div>
+            </section>
+
+            <section>
+                <h3>links</h3>
+                <div class="social">
+                    <a href="#">arch wiki</a>
+                    <a href="#">gentoo wiki</a>
+                    <a href="#">nixos wiki</a>
+                    <a href="#">freebsd handbook</a>
+                    <a href="#">suckless.org</a>
+                    <a href="#">unixporn reddit</a>
+                    <a href="#">lobsters</a>
+                    <a href="#">hacker news</a>
+                    <a href="#">sourcehut</a>
+                    <a href="#">codeberg</a>
+                    <a href="#">sr.ht</a>
+                </div>
+            </section>
+
+            <section>
+                <h3>reading</h3>
+                <div class="social">
+                    <a href="#">the unix philosophy</a>
+                    <a href="#">worse is better</a>
+                    <a href="#">the cathedral and bazaar</a>
+                    <a href="#">art of unix programming</a>
+                    <a href="#">in the beginning was the command line</a>
+                    <a href="#">how to ask questions the smart way</a>
+                    <a href="#">jwz's software engineering principles</a>
+                    <a href="#">program design in the unix environment</a>
+                </div>
+            </section>
+        </aside>
+    </div>
+
+    <footer>
+        <p>miqim | made with love of <span>neovim</span> <3 | 2026 is the end</p>
+    </footer>
+</body>
+</html>
