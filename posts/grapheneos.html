@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="celadon">
+<head>
+<script>!function(){var t=localStorage.getItem("t"),f=localStorage.getItem("f");if(t)document.documentElement.setAttribute("data-theme",t);if(f==="googlesans")document.documentElement.style.fontFamily="'Google Sans','Product Sans',sans-serif";else if(f==="ibmplexmono")document.documentElement.style.fontFamily="'IBM Plex Mono',monospace";else if(f)document.documentElement.style.fontFamily="'Spectral',Georgia,'Book Antiqua',serif"}();</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>my take on GrapheneOS · Miqim's Archive</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <div class="theme-wrap">
+    <span>theme:</span>
+    <select id="theme" onchange="setTheme(this.value)">
+      <option value="celadon">celadon [light]</option>
+      <option value="rosepine">RoséPine [dark]</option>
+      <option value="lichen">lichen [dark]</option>
+      <option value="nightlight">nightlight [dark]</option>
+    </select>
+  <div class="font-wrap">
+    <span>fonts:</span>
+    <select id="font-select" onchange="setFont(this.value)">
+      <option value="spectral">Spectral</option>
+      <option value="googlesans">Google Sans</option>
+      <option value="ibmplexmono">IBM Plex Mono</option>
+    </select>
+  </div>
+  </div>
+  <div>
+    <a href="../index.html" class="active">'blog</a>
+    <a href="../hoard.html">hoard</a>
+    <a href="../wishlist.html">wishlist</a>
+    <a href="#">projekts</a>
+    <a href="../about.html">about</a>
+  </div>
+</nav>
+
+<div class="title-box">
+  <h1>Miqim's Blog</h1>
+  <p class="page-sub">'blog</p>
+</div>
+
+<main>
+<a class="post-back" href="../index.html">← back to blog</a>
+<div class="post-wrap">
+  <div class="post-title">my take on GrapheneOS</div>
+  <div class="post-meta">05 May 2023</div>
+
+  <p>getting a Pixel 6 just for GrapheneOS, and why I even did it</p>
+
+  <div class="post-section">it was not a random decision</div>
+  <p>I did not buy the Pixel 6 randomly. At that point I had already spent a long time jumping between custom ROMs on Xiaomi devices, and the pattern was always the same. The hardware was fine, but Android felt increasingly heavy and noisy in a way that I could not ignore anymore. It was not about performance drops alone. It was about background behavior that I never asked for but could never fully stop.</p>
+  <p>MIUI made this feeling worse because even when nothing was open, there were always services running, optimizations happening, analytics components, vendor apps, and system processes that existed outside my control. It worked, but it never felt like a system that belonged fully to me.</p>
+  <p>So the idea behind Pixel 6 was not excitement or hype. It was a very simple goal. I wanted a device that runs the closest thing to clean Android, but with stronger privacy control and fewer assumptions made by the system. GrapheneOS kept coming up in that context as the most serious option, not as a customization project, but as a security and control focused system.</p>
+  <p>I did not expect it to feel magical. I expected it to feel quieter and more direct. That expectation was already enough.</p>
+
+  <div class="post-section">first boot feeling was not excitement, it was reduction</div>
+  <p>The first boot into GrapheneOS did not feel like an upgrade. It felt like removal. It felt like the phone was finally stripped down to only what is necessary for it to function properly, without any extra layers trying to define the experience for me.</p>
+  <p>There was no manufacturer layer sitting on top of Android. There were no Xiaomi services, no preinstalled ecosystem apps, no background advertising components, no forced suggestions, no "smart features" running quietly in the background. Even the way Google integration existed felt different because it was not deeply baked into the system by default.</p>
+  <p>What stood out immediately was silence. Not visual silence, but system behavior silence. Nothing was constantly syncing in the background without clear reason. Nothing was running just because it was part of a vendor package. Nothing was trying to be helpful in a way that I never asked for.</p>
+  <p>It did not feel like a feature-rich experience. It felt like a controlled environment where only explicitly allowed behavior exists.</p>
+  <p>That difference is hard to explain until you actually feel it for a few days.</p>
+
+  <div class="post-section">the actual goal was control, not performance or aesthetics</div>
+  <p>GrapheneOS is often misunderstood because people compare it directly with custom ROMs or stock Android improvements. My use case was not performance related and not aesthetic related at all.</p>
+  <p>I already had that phase with ROMs like crDroid, Evolution X, PixelExtended, and other AOSP builds where the focus is customization, UI changes, and performance tuning. GrapheneOS is not part of that category in practice.</p>
+  <p>The real goal was control over system behavior and isolation of apps from unnecessary privileges.</p>
+  <p>I wanted a phone where apps do not automatically assume deep system trust. I wanted fewer background dependencies tied to Google ecosystem services unless I explicitly allow them. I wanted a system where permissions are not suggestions but actual boundaries.</p>
+  <p>That changes the mindset completely. Instead of asking "what can I customize", the question becomes "what should be allowed to exist at all on my device".</p>
+  <p>It is less about adding features and more about removing assumptions.</p>
+
+  <div class="post-section">apps and real usage immediately showed the tradeoffs</div>
+  <p>The moment I started using real apps daily, the difference became practical instead of theoretical.</p>
+  <p>Basic apps like Telegram, Discord, Firefox, Signal style messaging apps, and normal browsers worked without issues. Even YouTube worked fine through browser usage, and in some cases with sandboxed Play Services when needed.</p>
+  <p>But when I moved into real life dependency apps, the system behavior became more noticeable. Banking apps and payment services, including local financial apps similar to bKash type usage, generally worked but sometimes required sandboxed Google Play Services to function properly. That already introduces an extra layer of setup that does not exist on normal Android.</p>
+  <p>Social apps like Instagram, Facebook, Messenger, and similar platforms worked fine, but the difference was not in whether they open or not. The difference was in how much you start noticing their dependency on background services, permissions, and persistent network activity.</p>
+  <p>On stock Android, most of that is invisible. On GrapheneOS, it becomes visible because nothing is silently allowed by default. You install an app, then you actively decide what it can access, and you observe what it tries to do.</p>
+  <p>That small shift changes how you perceive apps entirely. They stop feeling like tools and start feeling like controlled processes.</p>
+
+  <div class="post-section">sandboxed Play Services changed compatibility but also changed behavior awareness</div>
+  <p>GrapheneOS does not remove Google Play Services entirely. Instead, it runs it in a sandbox environment like a normal user-level app.</p>
+  <p>This is the core technical difference that changes everything. Apps that depend on Google APIs still function, but they no longer get system-level privileges by default. This means they operate within controlled boundaries instead of deep system integration.</p>
+  <p>In real usage, this affects things like Google Maps location behavior, push notifications for some apps, Uber style services, and anything that depends heavily on background synchronization. Everything still works, but the experience is not identical to stock Android. Notifications can feel less immediate in some cases. Background syncing is less aggressive. Some apps behave more "contained" instead of deeply integrated into system services.</p>
+  <p>This is not a failure. It is a design choice. But it is a choice you feel every day. It also forces awareness because you start noticing which apps depend heavily on Google infrastructure and which ones do not.</p>
+
+  <img class="post-img" src="https://grapheneos.org/assets/static/screenshots/pixel-9-pro-fold.jpg" alt="GrapheneOS on Pixel 9 Pro Fold" onerror="this.style.display='none'"/>
+
+  <div class="post-section">Pixel 6 hardware felt stable, not magically improved</div>
+  <p>Pixel 6 itself has known characteristics. Tensor chipset behavior, thermal patterns, battery variability, and general hardware quirks still exist regardless of operating system.</p>
+  <p>GrapheneOS does not change hardware. What it changes is system noise on top of that hardware. Without OEM services running in the background, without vendor analytics processes, and without hidden system optimizations constantly adjusting behavior, the phone feels more predictable.</p>
+  <p>It does not feel dramatically faster in real usage, but it feels more consistent. Apps open in a more stable way. Background spikes are less random. Battery drain patterns are easier to understand.</p>
+  <p>It is less about performance gain and more about removing unpredictable system activity.</p>
+
+  <div class="post-section">privacy feeling was real but often exaggerated online</div>
+  <p>Online discussions around GrapheneOS often make it sound like a full privacy transformation. Real usage is more grounded.</p>
+  <p>It does improve privacy posture significantly, but not in a way that makes you invisible or disconnected from systems entirely. What it actually does is reduce unnecessary trust assumptions. Apps do not get default access to system level components. Permissions are more explicit. Background access is more restricted unless you allow it.</p>
+  <p>So the experience becomes less about hiding from everything and more about controlling what is allowed to access what.</p>
+  <p>This is an important distinction because it changes expectations completely. You are still in Android ecosystem. You are just in a more restricted and controlled version of it.</p>
+
+  <div class="post-section">daily usage slowly turned into conscious system interaction</div>
+  <p>After a few days, the biggest change was not technical. It was behavioral.</p>
+  <p>On normal Android, you install apps and forget about system behavior. Everything runs in the background and you assume it is normal.</p>
+  <p>On GrapheneOS, you start noticing everything. You question why an app wants network access. You think about whether background activity is needed. You decide what notifications are actually important.</p>
+  <p>Apps like Instagram or Facebook feel very different because you become aware of how much background activity they depend on to feel "smooth" in normal Android. Even Google Maps feels different when it is sandboxed, because you start noticing dependencies that are usually hidden.</p>
+  <p>The system forces awareness instead of passive consumption.</p>
+
+  <div class="post-section">what actually stayed after using it</div>
+  <p>After extended use, what stayed was not hype, not disappointment, and not performance memory.</p>
+  <p>What stayed was awareness. Awareness that Android on most consumer phones is not a neutral system but a layered product shaped by manufacturers and ecosystem services. Awareness that most background behavior is not strictly required for basic usage, but added for ecosystem integration and convenience. Awareness that privacy is not a feature switch but a continuous tradeoff between control and convenience.</p>
+  <p>GrapheneOS did not make the phone feel perfect. It made the system behavior visible in a way normal Android hides by default.</p>
+  <p>And once you see that level of visibility, even switching back to normal Android feels different because you notice things you never paid attention to before.</p>
+
+  <img class="post-img post-img-sm" src="https://grapheneos.org/logo.png" alt="GrapheneOS logo" onerror="this.style.display='none'"/>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-left">
+    <p>© Copyright 2026 by Tahfiz Habib.</p>
+    <p>All thoughts are personal. Lifelong ranting, learning, and documentation.</p>
+    <p>More info: <a href="../about.html">imprint</a> &amp; <a href="../ai-transparency.html">AI transparency</a>. Subscribe via <a href="#">atom</a> / <a href="#">RSS</a>.</p>
+  </div>
+  <div class="footer-icons">
+    <a href="https://fosstodon.org/@miqim" target="_blank" rel="noopener" title="Mastodon"><svg viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg"><path d="M73.7 17.2C72.7 10.1 66.5 4.5 59.1 3.3 57.8 3.1 52.9 2.4 41.5 2.4h-.1C29.9 2.4 27.5 3.1 26.2 3.3 19 4.5 12.5 9.5 11 16.8c-.7 3.7-.8 7.7-.5 11.5.4 5.7.5 11.3 1.5 16.9 .7 3.6 1.8 7.2 3.4 10.5 3 6.1 7.6 10.3 13.1 12.8 5.9 2.6 12.9 3.2 19.3 1.8 .6-.1 1.2-.3 1.8-.5 1.5-.4 3.2-1 4.5-1.8l-.1-4.4s-2.1.7-4.4 1.3c-3.5.9-7.2 1-10.8.3-6.3-1.3-8-6.4-8.5-8.9-.5-2.3-.4-4.7-.4-4.7 14.7 3.6 27.2 1.6 30.6.8.1 0 .2 0 .3-.1 4.6-1.1 9.6-3.8 10.3-13 .2-1.8.5-6 .5-7.8C73.4 17.5 73.4 17.3 73.7 17.2zM61.5 38.3h-7.7V20c0-3.5-1.5-5.3-4.4-5.3-3.3 0-4.9 2.1-4.9 6.3v9.1H36.9V21c0-4.2-1.7-6.3-5-6.3-2.9 0-4.4 1.8-4.4 5.3v18.3H19.8V20.4c0-3.5.9-6.3 2.7-8.4 1.8-2.1 4.2-3.2 7.2-3.2 3.4 0 6 1.3 7.7 3.9l1.7 2.8 1.7-2.8c1.7-2.6 4.3-3.9 7.7-3.9 3 0 5.4 1.1 7.2 3.2 1.8 2.1 2.7 4.9 2.7 8.4v17.9z"/></svg></a>
+    <a href="https://matrix.to/#/@miqim:matrix.org" target="_blank" rel="noopener" title="Matrix"><svg viewBox="0 0 24 24"><path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.003 1.108.26-.374.636-.704 1.123-.993.489-.288 1.033-.434 1.634-.434.457 0 .883.064 1.272.188.39.125.722.314.996.569.274.255.485.583.635.985.148.4.224.873.224 1.417v5.728h-2.272V12.9c0-.287-.01-.558-.034-.806a1.75 1.75 0 0 0-.156-.633 1.015 1.015 0 0 0-.39-.42c-.174-.1-.41-.153-.706-.153-.296 0-.541.06-.733.18a1.28 1.28 0 0 0-.457.477 1.93 1.93 0 0 0-.23.674 5.54 5.54 0 0 0-.06.818v4.624H9.94V12.9c0-.26-.008-.517-.026-.775a1.935 1.935 0 0 0-.138-.652 1.04 1.04 0 0 0-.375-.46c-.172-.115-.416-.173-.728-.173-.104 0-.24.025-.407.073a1.245 1.245 0 0 0-.44.258 1.47 1.47 0 0 0-.344.518c-.093.217-.14.497-.14.837v5.15H5.065V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z"/></svg></a>
+    <a href="https://github.com/tahfizhabib" target="_blank" rel="noopener" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="mailto:tahfizhabib@proton.me" title="Email"><svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

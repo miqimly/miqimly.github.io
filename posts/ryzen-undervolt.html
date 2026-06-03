@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="celadon">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>How I Undervolted My Ryzen 7 5700X3D · Miqim's Archive</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<script>!function(){var t=localStorage.getItem("t"),f=localStorage.getItem("f");if(t)document.documentElement.setAttribute("data-theme",t);if(f==="googlesans")document.documentElement.style.fontFamily="'Google Sans','Product Sans',sans-serif";else if(f==="ibmplexmono")document.documentElement.style.fontFamily="'IBM Plex Mono',monospace";else if(f)document.documentElement.style.fontFamily="'Spectral',Georgia,'Book Antiqua',serif"}();</script>
+</head>
+<body>
+<nav aria-label="Primary">
+  <div class="theme-wrap">
+    <span>theme:</span>
+    <select id="theme" onchange="setTheme(this.value)">
+      <option value="celadon">celadon [light]</option>
+      <option value="rosepine">RoséPine [dark]</option>
+      <option value="lichen">lichen [dark]</option>
+      <option value="nightlight">nightlight [dark]</option>
+    </select>
+  </div>
+  <div class="font-wrap">
+    <span>fonts:</span>
+    <select id="font-select" onchange="setFont(this.value)">
+      <option value="spectral">Spectral</option>
+      <option value="googlesans">Google Sans</option>
+      <option value="ibmplexmono">IBM Plex Mono</option>
+    </select>
+  </div>
+  <div>
+    <a href="../index.html" class="active">'blog</a>
+    <a href="../hoard.html">hoard</a>
+    <a href="../wishlist.html">wishlist</a>
+    <a href="#">projekts</a>
+    <a href="../about.html">about</a>
+  </div>
+</nav>
+<div class="title-box">
+  <h1>Miqim's Blog</h1>
+  <p class="page-sub">'blog</p>
+</div>
+<main>
+<a class="post-back" href="../index.html">back to blog</a>
+<div class="post-wrap">
+  <div class="post-title">How I Undervolted My Ryzen 7 5700X3D</div>
+  <div class="post-meta">24 March 2024</div>
+
+  <div class="post-section">The Problem Nobody Warned Me About</div>
+  <p>When I first built around the Ryzen 7 5700X3D, I was expecting great gaming performance. And it delivered. But what came with it was something I did not expect at all: heat. A lot of it.</p>
+  <p>Idle temperatures were sitting between 55 and 65 degrees Celsius doing absolutely nothing. Just a browser open and the desktop running. The moment I launched a game, it would climb into the high 70s and sometimes touch 80. The cooler fan was loud. The whole thing felt like it was working harder than it should.</p>
+  <p>I spent time questioning whether my cooler was bad, whether my thermal paste application was wrong, whether my case airflow was the problem. I tried different fan curves. I reseated the cooler twice. Temperatures barely budged.</p>
+  <p>Then I started reading about what the 5700X3D actually is, and everything started making more sense.</p>
+
+  <div class="post-section">Why the 5700X3D Is Different From Other CPUs</div>
+  <p>The 5700X3D is not a normal Ryzen chip. It has a layer of 3D V-Cache stacked directly on top of the processor die. This extra cache is what makes it so good at gaming, because games love fast, large cache. But that cache layer is extremely sensitive to heat and voltage.</p>
+  <p>Because of this, AMD locked the chip. You cannot traditionally overclock it. You cannot raise the voltage. You cannot manually set a higher clock speed. AMD put hard limits in place specifically to protect that V-Cache from dying early.</p>
+  <p>This creates a situation where the chip runs at AMD's conservative voltage settings out of the box, settings designed to be safe for every single unit they sell, including the ones with weaker silicon. Your specific chip might be perfectly capable of running at lower voltage and still being completely stable. But AMD does not know that, so it plays it safe for everyone.</p>
+  <p>Running at more voltage than the chip actually needs means generating more heat than necessary. More heat means the chip's automatic boost system has to pull back to protect itself. So your CPU ends up running hotter and sometimes slower than it could, not because it is a bad chip, but because it is being fed more voltage than it needs.</p>
+  <p>Undervolting is the process of finding out how little voltage your chip actually needs to stay stable, and telling it to use that instead.</p>
+
+  <div class="post-section">What Undervolting Actually Does</div>
+  <p>This is the part that confused me at first because it sounds backwards. Giving a CPU less voltage and expecting it to perform better seems like it should not work. But it does, and here is why.</p>
+  <p>The Ryzen 7 5700X3D boosts automatically based on two things: temperature and power headroom. When the chip is cool and has room in its power budget, AMD's Precision Boost Overdrive system lets it clock as high as 4.1 GHz and hold it there. When temperatures climb, it has to reduce clocks to protect itself. That thermal pulling back is called throttling.</p>
+  <p>By undervolting, you reduce how much heat the chip generates at any given clock speed. It reaches the same frequencies but uses less energy to get there. Less energy means less heat. Less heat means the automatic boost system never has to pull back. The chip just sits at its maximum boost clock and stays there for the entire gaming session instead of climbing, hitting a thermal wall, pulling back, boosting again, pulling back again, over and over.</p>
+  <p>The result is not just lower temperatures. It is smoother, more consistent performance. Frametimes stabilize. The micro-stutters that come from the CPU briefly throttling mid-game go away.</p>
+
+  <div class="post-section">The Tool I Used: PBO2 Tuner</div>
+  <p>There are two ways to apply undervolting on the 5700X3D. You can do it through the BIOS, which requires navigating through motherboard-specific menus and digging into Precision Boost Overdrive settings that look intimidating if you have never been there before. Or you can do it through a free Windows application called PBO2 Tuner.</p>
+  <p>I went with PBO2 Tuner because my B550 motherboard did not expose all the Curve Optimizer options clearly in BIOS, and because PBO2 Tuner lets you experiment, apply, test, and roll back changes without ever rebooting into BIOS. The whole process happens inside Windows.</p>
+  <p>PBO2 Tuner is a community-developed tool built specifically for AMD Ryzen chips. It accesses the same underlying Curve Optimizer functionality that AMD built into the platform, just through a Windows interface instead of BIOS. It has been used by thousands of people in the Ryzen community for years.</p>
+  <p>You download it from its GitHub page, extract the folder somewhere on your drive, and run the executable as administrator. That is the entire installation process. There is nothing to install.</p>
+
+  <div class="post-section">What the Curve Optimizer Actually Is</div>
+  <p>Before getting into what I did, it helps to understand what the Curve Optimizer setting actually controls, in plain terms.</p>
+  <p>Your CPU has a voltage and frequency curve. At low clock speeds it uses low voltage. As it boosts higher, it needs more voltage to stay stable. This relationship between voltage and frequency is the curve.</p>
+  <p>The Curve Optimizer lets you shift that entire curve downward by a certain amount. A negative offset of -10 means that at every frequency step along that curve, the chip uses slightly less voltage than it would by default. A negative offset of -30 means a larger reduction. The larger the negative number, the more aggressively you are reducing voltage.</p>
+  <p>You do not pick a specific voltage number. You pick an offset from the default, and the chip's own boost system handles the rest dynamically. This is what makes it safe in a way that manual voltage setting is not.</p>
+
+  <div class="post-section">What I Actually Did, Step by Step</div>
+  <p>I opened PBO2 Tuner as administrator and navigated to the Curve tab. This is where you see the per-core offset sliders. There are eight sliders, one for each of the eight cores in the 5700X3D.</p>
+  <p>I did not touch any of them yet. First I needed a baseline to compare against.</p>
+  <p>I opened HWiNFO64 in sensors-only mode and left it running. This software shows real-time temperature and clock speed data with more accuracy than anything built into Windows. I wanted to see actual numbers before and after any changes.</p>
+  <p>Then I ran Cinebench R23, which is a free benchmarking tool that stresses the CPU heavily for around ten minutes and gives you a score at the end. I noted the score and the peak temperature during the run. My stock result was around 12,300 points with temperatures hitting 82 degrees Celsius at the peak. That was my starting point.</p>
+  <p>Then I went back to PBO2 Tuner and set all eight cores to negative 10. Applied. Ran Cinebench again. Stable. Temperatures dropped a few degrees.</p>
+  <p>Negative 15. Applied. Stable.</p>
+  <p>Negative 20. Applied. Stable. Temperatures now visibly lower.</p>
+  <p>Negative 25. Applied. Stable. Cinebench score actually went up slightly because the chip could sustain its boost longer without thermal throttling.</p>
+  <p>Negative 30. Applied. Ran Cinebench. Completed successfully and score improved again. Temperatures during the run were now around 68 to 72 degrees instead of the 82 I was seeing at stock. That is roughly a 10 to 12 degree drop under the exact same workload.</p>
+  <p>I stayed at negative 30 all-core because that is where most 5700X3D chips stabilize comfortably.</p>
+
+  <div class="post-section">Testing Stability, Which Is the Part People Skip</div>
+  <p>Getting Cinebench to pass once is not the same as being stable. The failure mode that catches people off guard is called idle crashing, where the system crashes not during heavy load but during light activity like browsing or watching a video. This happens because the voltage reduction sometimes affects how the chip behaves at very low frequencies, not just high ones.</p>
+  <p>After setting negative 30, I left the system running at idle for about an hour. No crash. Then I gamed for two hours across two different titles. No crash. Temperatures sat between 65 and 72 during gameplay compared to the 78 to 82 before the undervolt.</p>
+  <p>I also ran Cinebench R23 three times back to back to simulate sustained thermal stress. All three completed and scores were consistent.</p>
+  <p>After two full days of normal use including gaming sessions, productivity work, and leaving the machine on overnight, I had zero crashes or instability. The undervolt was solid.</p>
+
+  <div class="post-section">The Problem With PBO2 Tuner You Have to Know</div>
+  <p>PBO2 Tuner does not save its settings permanently the way BIOS does. Every time you restart your computer or wake it from sleep, the offsets reset to default. This means your temperatures go back to stock after every reboot unless you do something about it.</p>
+  <p>The solution is Windows Task Scheduler. You set up a task that automatically launches PBO2 Tuner with your chosen settings every time the system boots or wakes from sleep. It runs silently in the background, applies the curve offsets, and closes. You never see it happen but the settings are active within seconds of logging in.</p>
+  <p>Setting this up takes about ten minutes and you only do it once. The Task Scheduler is built into Windows, no extra software needed. You point it at the PBO2 Tuner executable, tell it what arguments to pass at launch which are your offset values, set it to trigger on system startup and on wake from sleep, and save the task.</p>
+
+  <div class="post-section">The Results After Two Weeks</div>
+  <p>Idle temperatures: down from the 55 to 65 range to 38 to 45. That alone made the machine feel completely different to sit next to.</p>
+  <p>Gaming temperatures: down from high 70s and low 80s to consistent 65 to 72 range depending on the game.</p>
+  <p>Cinebench R23 multi-core score: went from around 12,300 at stock to around 12,650. A small improvement but in the right direction.</p>
+  <p>Fan noise: noticeably reduced. My cooler fans no longer ramp up aggressively during gaming sessions.</p>
+  <p>Frametimes in gaming: smoother. The occasional micro-stutter I was seeing in CPU-heavy games became much less frequent.</p>
+  <p>Zero crashes, zero instability, zero issues in two weeks of daily use.</p>
+
+  <div class="post-section">Things I Wish I Knew Before Starting</div>
+  <p>The process feels intimidating before you do it and extremely simple after. There is no soldering, no hardware modification, no BIOS flashing. You are adjusting a software-level voltage offset through a Windows application. If anything goes wrong, you close the tool, reopen it, set everything back to zero, and your system is exactly as it was. There is a real undo button here.</p>
+  <p>Every chip is different. Negative 30 worked perfectly for my unit but your chip might only be stable at negative 20 or it might handle negative 35 on some cores. The silicon lottery is real. Test gradually and let the testing tell you where your limit is.</p>
+  <p>Do not skip the stability testing. Two Cinebench runs is not enough. Use the system normally for at least a day or two before declaring it stable. If you are going to crash, it usually happens within the first 48 hours of a new offset.</p>
+  <p>Undervolting does not replace a proper cooler. If you are still running the stock AMD Wraith cooler, the results will be less dramatic. A decent aftermarket air cooler like a DeepCool AK400 or a Thermalright Peerless Assassin makes the undervolt much more effective because you have better baseline thermal headroom to work with.</p>
+  <p>This is probably one of the highest value-to-effort modifications you can make to a 5700X3D build. Thirty minutes of work, two days of casual stability testing, and the chip runs the way it probably should have been configured from the factory.</p>
+
+</div>
+</main>
+<footer>
+  <div class="footer-left">
+    <p>© Copyright 2026 by Tahfiz Habib.</p>
+    <p>All thoughts are personal. Lifelong ranting, learning, and documentation.</p>
+    <p>More info: <a href="../about.html">imprint</a> &amp; <a href="../ai-transparency.html">AI transparency</a>. Subscribe via <a href="#">atom</a> / <a href="#">RSS</a>.</p>
+  </div>
+  <div class="footer-icons">
+    <a href="https://fosstodon.org/@miqim" target="_blank" rel="noopener" title="Mastodon"><svg viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg"><path d="M73.7 17.2C72.7 10.1 66.5 4.5 59.1 3.3 57.8 3.1 52.9 2.4 41.5 2.4h-.1C29.9 2.4 27.5 3.1 26.2 3.3 19 4.5 12.5 9.5 11 16.8c-.7 3.7-.8 7.7-.5 11.5.4 5.7.5 11.3 1.5 16.9.7 3.6 1.8 7.2 3.4 10.5 3 6.1 7.6 10.3 13.1 12.8 5.9 2.6 12.9 3.2 19.3 1.8.6-.1 1.2-.3 1.8-.5 1.5-.4 3.2-1 4.5-1.8l-.1-4.4s-2.1.7-4.4 1.3c-3.5.9-7.2 1-10.8.3-6.3-1.3-8-6.4-8.5-8.9-.5-2.3-.4-4.7-.4-4.7 14.7 3.6 27.2 1.6 30.6.8.1 0 .2 0 .3-.1 4.6-1.1 9.6-3.8 10.3-13 .2-1.8.5-6 .5-7.8C73.4 17.5 73.4 17.3 73.7 17.2zM61.5 38.3h-7.7V20c0-3.5-1.5-5.3-4.4-5.3-3.3 0-4.9 2.1-4.9 6.3v9.1H36.9V21c0-4.2-1.7-6.3-5-6.3-2.9 0-4.4 1.8-4.4 5.3v18.3H19.8V20.4c0-3.5.9-6.3 2.7-8.4 1.8-2.1 4.2-3.2 7.2-3.2 3.4 0 6 1.3 7.7 3.9l1.7 2.8 1.7-2.8c1.7-2.6 4.3-3.9 7.7-3.9 3 0 5.4 1.1 7.2 3.2 1.8 2.1 2.7 4.9 2.7 8.4v17.9z"/></svg></a>
+    <a href="https://matrix.to/#/@miqim:matrix.org" target="_blank" rel="noopener" title="Matrix"><svg viewBox="0 0 24 24"><path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.003 1.108.26-.374.636-.704 1.123-.993.489-.288 1.033-.434 1.634-.434.457 0 .883.064 1.272.188.39.125.722.314.996.569.274.255.485.583.635.985.148.4.224.873.224 1.417v5.728h-2.272V12.9c0-.287-.01-.558-.034-.806a1.75 1.75 0 0 0-.156-.633 1.015 1.015 0 0 0-.39-.42c-.174-.1-.41-.153-.706-.153-.296 0-.541.06-.733.18a1.28 1.28 0 0 0-.457.477 1.93 1.93 0 0 0-.23.674 5.54 5.54 0 0 0-.06.818v4.624H9.94V12.9c0-.26-.008-.517-.026-.775a1.935 1.935 0 0 0-.138-.652 1.04 1.04 0 0 0-.375-.46c-.172-.115-.416-.173-.728-.173-.104 0-.24.025-.407.073a1.245 1.245 0 0 0-.44.258 1.47 1.47 0 0 0-.344.518c-.093.217-.14.497-.14.837v5.15H5.065V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z"/></svg></a>
+    <a href="https://github.com/tahfizhabib" target="_blank" rel="noopener" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="mailto:tahfizhabib@proton.me" title="Email"><svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

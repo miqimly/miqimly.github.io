@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="celadon">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AtlasOS vs ReviOS (Not a review) · Miqim's Archive</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/style.css"/>
+<script>!function(){var t=localStorage.getItem("t"),f=localStorage.getItem("f");if(t)document.documentElement.setAttribute("data-theme",t);if(f==="googlesans")document.documentElement.style.fontFamily="'Google Sans','Product Sans',sans-serif";else if(f==="ibmplexmono")document.documentElement.style.fontFamily="'IBM Plex Mono',monospace";else if(f)document.documentElement.style.fontFamily="'Spectral',Georgia,'Book Antiqua',serif"}();</script>
+</head>
+<body>
+<nav aria-label="Primary">
+  <div class="theme-wrap">
+    <span>theme:</span>
+    <select id="theme" onchange="setTheme(this.value)">
+      <option value="celadon">celadon [light]</option>
+      <option value="rosepine">RoséPine [dark]</option>
+      <option value="lichen">lichen [dark]</option>
+      <option value="nightlight">nightlight [dark]</option>
+    </select>
+  </div>
+  <div class="font-wrap">
+    <span>fonts:</span>
+    <select id="font-select" onchange="setFont(this.value)">
+      <option value="spectral">Spectral</option>
+      <option value="googlesans">Google Sans</option>
+      <option value="ibmplexmono">IBM Plex Mono</option>
+    </select>
+  </div>
+  <div>
+    <a href="../index.html" class="active">'blog</a>
+    <a href="../hoard.html">hoard</a>
+    <a href="../wishlist.html">wishlist</a>
+    <a href="#">projekts</a>
+    <a href="../about.html">about</a>
+  </div>
+</nav>
+<div class="title-box">
+  <h1>Miqim's Blog</h1>
+  <p class="page-sub">'blog</p>
+</div>
+<main>
+<a class="post-back" href="../index.html">back to blog</a>
+<div class="post-wrap">
+  <div class="post-title">AtlasOS vs ReviOS (Not a review)</div>
+  <div class="post-meta">01 January 2024</div>
+
+  <p><em>written from experience gathered between 2021 and 2023, during the period I was actively experimenting with custom Windows builds for gaming performance.</em></p>
+
+  <img class="post-img" src="https://w.wallhaven.cc/full/x6/wallhaven-x62ppo.png" alt="wallpaper" onerror="this.style.display='none'"/>
+
+  <div class="post-section">The Moment I Got Tired of Stock Windows</div>
+  <p>It was not one big thing that pushed me over the edge. It was the accumulation of small annoyances over months. The fan spinning up at idle for no visible reason. The random disk activity in the middle of a gaming session. The stutters in Valorant that had nothing to do with my internet or my GPU. Task Manager showing 2.4 gigabytes of RAM used before I had opened a single application.</p>
+  <p>I knew my hardware was capable of more. The bottleneck was not the components, it was the operating system sitting on top of them doing its own thing constantly. So I started reading. Forums, YouTube, Discord servers full of people who had gone down this exact path before me.</p>
+  <p>Two names kept coming up: ReviOS and AtlasOS.</p>
+  <p>I decided to try both. Not at the same time obviously, but one after the other, living with each one for real, not just for a benchmark screenshot.</p>
+
+  <div class="post-section">Why I Tried ReviOS First</div>
+  <p>ReviOS felt like the sensible starting point. Everything I read about it pointed to the same description: Windows, but lighter. It was not trying to rip the operating system apart. It was trying to make it behave the way it probably should have behaved from the start.</p>
+  <p>The install process was straightforward. I flashed the ISO the same way you would flash any Windows image, booted from USB, and went through a setup that felt familiar because the base was still Windows. It did not feel like I had installed something alien. It felt like a clean Windows install that had already done all the post-install cleanup for me.</p>
+  <p>The first thing I noticed after logging in was the RAM usage at idle. On stock Windows I was sitting around 2.3 to 2.5 gigabytes just at the desktop. On ReviOS that number dropped to around 900 megabytes to 1.1 gigabytes depending on what background processes were still running. That is not a small difference. On my 16 gigabyte system it freed up meaningful headroom for games. On an 8 gigabyte system it would have been the difference between playable and unplayable for certain titles.</p>
+  <p>The telemetry services were already gone. The scheduled diagnostic tasks that would randomly wake the disk at 3am were already disabled. The Xbox services, the mixed reality services, the consumer experience telemetry, all of it stripped out at the image level before the first boot. I did not have to run a single script or change a single registry key manually.</p>
+  <p>What ReviOS did not touch was anything that would break real-world usability. Windows Update still worked. The Microsoft Store was still accessible. I could install any application I had been using before without compatibility issues. It felt like a conservative but meaningful optimization, not a surgery.</p>
+  <p>Gaming on ReviOS felt better in a specific way that is hard to describe in raw numbers. The frame rates in Valorant were not dramatically different. What was different was the consistency. The frametimes were smoother. The occasional hitch I would get mid-round from some background process waking up and grabbing CPU time became rare. The game just felt more responsive to inputs.</p>
+  <p>I ran ReviOS as my daily driver for a few weeks. In that time I had zero crashes, zero application compatibility issues, and zero moments where I felt like I had given something important up. It was genuinely a better daily experience than stock Windows without demanding anything from me in return.</p>
+  <p>But I kept reading about AtlasOS. And the people describing it were talking about a completely different level of change.</p>
+
+  <div class="post-section">Then I Went Down the AtlasOS Road</div>
+  <p>AtlasOS is not a lighter Windows. That is not what it is trying to be and I think a lot of people misunderstand it going in. AtlasOS is Windows reduced to the minimum viable state required to run games and core system functions. Everything else is a candidate for removal, and AtlasOS removes a lot of it.</p>
+  <p>The install was more involved than ReviOS. There was preparation required before even running the playbook, which is what AtlasOS calls its setup process. It runs on top of a clean Windows install rather than being a standalone ISO in the traditional sense, so you start with a fresh Windows image and then run the AtlasOS playbook on top of it, which strips and modifies the system according to its configuration.</p>
+  <p>The first boot into a finished AtlasOS environment is a strange experience if you are used to stock Windows. Things are missing. Not broken, just absent. The interface is sparse. The system tray is quiet. Background processes in Task Manager are dramatically reduced compared to anything I had seen before, including ReviOS.</p>
+  <p>RAM at idle on AtlasOS sat around 500 to 700 megabytes on my system. That number genuinely surprised me the first time I saw it.</p>
+  <p>The gaming performance difference compared to ReviOS was real and noticeable. Not just frametimes this time. Actual input feel. The gap between moving my mouse and seeing the result on screen felt tighter. In Valorant specifically, which is a game where that responsiveness gap matters enormously at higher levels of play, the system felt like it had been purpose-built for this one task. Because in a sense it had been.</p>
+  <p>AtlasOS modifies things that ReviOS deliberately leaves alone. The CPU scheduling behavior is changed at a level that affects how the kernel handles thread priority. The power plan is configured aggressively beyond what the standard high performance plan does. The network stack receives specific tuning. Visual elements that consume GPU resources are stripped further than ReviOS takes them. Timer resolution behavior is adjusted system-wide.</p>
+  <p>The result is a machine that in gaming scenarios feels faster and more responsive than anything I had experienced on Windows before, including ReviOS.</p>
+
+  <div class="post-section">But Then Reality Showed Up</div>
+  <p>A few days into using AtlasOS as a daily driver, the tradeoffs started appearing.</p>
+  <p>The first issue was software compatibility. An application I used regularly for something outside of gaming refused to install correctly. It was looking for a Windows component that AtlasOS had removed. Not a critical system file, just something that the application's installer expected to be present. I had to find a workaround, and not every application has a workaround.</p>
+  <p>The second issue was Vanguard. Valorant's anti-cheat system, the exact game I had optimized the machine for, started having problems. It flagged the modified system during certain sessions. This is the specific irony of AtlasOS that the community talks about openly: a gaming operating system that can cause friction with the anti-cheat systems of the games it was built for.</p>
+  <p>The third issue was updates. AtlasOS discourages standard Windows Update behavior because updates can reintroduce components the playbook removed. This means the system gradually falls behind on security patches. For a machine used exclusively for gaming on a home network, this is a manageable tradeoff that you can consciously accept. For a machine that also handles anything sensitive, it is a real problem.</p>
+  <p>The fourth issue was less concrete but still real: trust. Running a modified operating system from a third-party community means trusting that the people who built it only did what they documented. ReviOS and AtlasOS both have active communities and relatively transparent changelogs, so this trust is more informed than it would be with a random ISO from a forum post. But it is still a different level of trust than running an official Microsoft image.</p>
+
+  <div class="post-section">What I Actually Kept Using and Why</div>
+  <p>After going through both, I settled into a position that probably sounds anticlimactic: I went back to ReviOS for daily use, with some manual additions on top.</p>
+  <p>The reason was simple. AtlasOS gave me real gaming performance gains but required me to give up too much in other areas of daily computing. I use my PC for more than games. I need application compatibility. I need update stability. I need the machine to work without friction for things that are not gaming.</p>
+  <p>ReviOS gave me most of the gaming benefit I actually cared about, which was smoother frametimes and more consistent CPU scheduling, without asking me to sacrifice anything outside of gaming. The idle RAM reduction alone made the daily experience noticeably better. The background process reduction meant fewer random interruptions. And because it did not strip core Windows components aggressively, everything I needed for non-gaming use just worked.</p>
+  <p>The manual tweaks I added on top of ReviOS closed most of the gap between it and AtlasOS for gaming purposes. Disabling specific telemetry services that ReviOS left partially intact. Adjusting the power plan manually. Cleaning up startup entries that had accumulated. None of it required installing anything extra and all of it was reversible.</p>
+
+  <div class="post-section">The Honest Comparison</div>
+  <p>ReviOS is for someone who wants a noticeably better Windows experience across everything they do with their machine. It improves gaming without breaking daily use. It removes the bloat without removing the foundation. You give up almost nothing and you gain a system that feels meaningfully lighter and more responsive. The bar to entry is low and the risk is minimal.</p>
+  <p>AtlasOS is for someone with a specific machine dedicated to a specific purpose, primarily competitive gaming, who understands and actively accepts the tradeoffs involved. It delivers genuine performance that ReviOS cannot match at the extremes. But it demands that you treat the machine as a purpose-built tool rather than a general computer. If that describes your situation, AtlasOS earns its reputation. If it does not, the tradeoffs will frustrate you within a week.</p>
+  <p>The thing both of them taught me, more than any specific performance number, is that Windows as shipped is not a neutral foundation. It is a product with Microsoft's priorities baked into it at every level. The optimization community exists because a lot of people decided those priorities were not theirs and went looking for alternatives.</p>
+  <p>Both ReviOS and AtlasOS are answers to that same question. They just answer it at different volumes.</p>
+
+  <div class="post-section">A Few Things Worth Doing on Either System</div>
+  <p>Whether you go ReviOS, AtlasOS, or even just stock Windows with manual cleanup, some baseline things are worth doing on any gaming-focused machine.</p>
+  <p>Killing the telemetry service stops the most discussed background reporting pipeline.</p>
+  <pre style="background:var(--bg);border:1px solid var(--border);padding:.9rem 1.1rem;overflow-x:auto;font-size:.88rem;line-height:1.7;margin:1rem 0;font-family:'IBM Plex Mono',monospace">sc stop DiagTrack
+sc config DiagTrack start=disabled</pre>
+
+  <p>Locking the group policy telemetry setting prevents Windows from quietly re-enabling data collection after a feature update.</p>
+  <pre style="background:var(--bg);border:1px solid var(--border);padding:.9rem 1.1rem;overflow-x:auto;font-size:.88rem;line-height:1.7;margin:1rem 0;font-family:'IBM Plex Mono',monospace">reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v AllowTelemetry /t REG_DWORD /d 0 /f</pre>
+
+  <p>Disabling the Compatibility Appraiser scheduled task removes one of the heaviest background diagnostic scans Windows runs on a timer.</p>
+  <pre style="background:var(--bg);border:1px solid var(--border);padding:.9rem 1.1rem;overflow-x:auto;font-size:.88rem;line-height:1.7;margin:1rem 0;font-family:'IBM Plex Mono',monospace">schtasks /Change /TN "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /Disable
+schtasks /Change /TN "\Microsoft\Windows\Application Experience\ProgramDataUpdater" /Disable</pre>
+
+  <p>Killing SysMain reduces the background RAM preloading behavior that competes with games for memory headroom. More relevant on 8 gigabyte systems than 16 or 32.</p>
+  <pre style="background:var(--bg);border:1px solid var(--border);padding:.9rem 1.1rem;overflow-x:auto;font-size:.88rem;line-height:1.7;margin:1rem 0;font-family:'IBM Plex Mono',monospace">sc stop SysMain
+sc config SysMain start=disabled</pre>
+
+  <p>Disabling the Xbox Game DVR recording overlay removes background capture overhead that runs even on systems that never use it.</p>
+  <pre style="background:var(--bg);border:1px solid var(--border);padding:.9rem 1.1rem;overflow-x:auto;font-size:.88rem;line-height:1.7;margin:1rem 0;font-family:'IBM Plex Mono',monospace">reg add "HKCU\System\GameConfigStore" /v GameDVR_Enabled /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v AllowGameDVR /t REG_DWORD /d 0 /f</pre>
+
+</div>
+</main>
+<footer>
+  <div class="footer-left">
+    <p>© Copyright 2026 by Tahfiz Habib.</p>
+    <p>All thoughts are personal. Lifelong ranting, learning, and documentation.</p>
+    <p>More info: <a href="../about.html">imprint</a> &amp; <a href="../ai-transparency.html">AI transparency</a>. Subscribe via <a href="#">atom</a> / <a href="#">RSS</a>.</p>
+  </div>
+  <div class="footer-icons">
+    <a href="https://fosstodon.org/@miqim" target="_blank" rel="noopener" title="Mastodon"><svg viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg"><path d="M73.7 17.2C72.7 10.1 66.5 4.5 59.1 3.3 57.8 3.1 52.9 2.4 41.5 2.4h-.1C29.9 2.4 27.5 3.1 26.2 3.3 19 4.5 12.5 9.5 11 16.8c-.7 3.7-.8 7.7-.5 11.5.4 5.7.5 11.3 1.5 16.9.7 3.6 1.8 7.2 3.4 10.5 3 6.1 7.6 10.3 13.1 12.8 5.9 2.6 12.9 3.2 19.3 1.8.6-.1 1.2-.3 1.8-.5 1.5-.4 3.2-1 4.5-1.8l-.1-4.4s-2.1.7-4.4 1.3c-3.5.9-7.2 1-10.8.3-6.3-1.3-8-6.4-8.5-8.9-.5-2.3-.4-4.7-.4-4.7 14.7 3.6 27.2 1.6 30.6.8.1 0 .2 0 .3-.1 4.6-1.1 9.6-3.8 10.3-13 .2-1.8.5-6 .5-7.8C73.4 17.5 73.4 17.3 73.7 17.2zM61.5 38.3h-7.7V20c0-3.5-1.5-5.3-4.4-5.3-3.3 0-4.9 2.1-4.9 6.3v9.1H36.9V21c0-4.2-1.7-6.3-5-6.3-2.9 0-4.4 1.8-4.4 5.3v18.3H19.8V20.4c0-3.5.9-6.3 2.7-8.4 1.8-2.1 4.2-3.2 7.2-3.2 3.4 0 6 1.3 7.7 3.9l1.7 2.8 1.7-2.8c1.7-2.6 4.3-3.9 7.7-3.9 3 0 5.4 1.1 7.2 3.2 1.8 2.1 2.7 4.9 2.7 8.4v17.9z"/></svg></a>
+    <a href="https://matrix.to/#/@miqim:matrix.org" target="_blank" rel="noopener" title="Matrix"><svg viewBox="0 0 24 24"><path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.003 1.108.26-.374.636-.704 1.123-.993.489-.288 1.033-.434 1.634-.434.457 0 .883.064 1.272.188.39.125.722.314.996.569.274.255.485.583.635.985.148.4.224.873.224 1.417v5.728h-2.272V12.9c0-.287-.01-.558-.034-.806a1.75 1.75 0 0 0-.156-.633 1.015 1.015 0 0 0-.39-.42c-.174-.1-.41-.153-.706-.153-.296 0-.541.06-.733.18a1.28 1.28 0 0 0-.457.477 1.93 1.93 0 0 0-.23.674 5.54 5.54 0 0 0-.06.818v4.624H9.94V12.9c0-.26-.008-.517-.026-.775a1.935 1.935 0 0 0-.138-.652 1.04 1.04 0 0 0-.375-.46c-.172-.115-.416-.173-.728-.173-.104 0-.24.025-.407.073a1.245 1.245 0 0 0-.44.258 1.47 1.47 0 0 0-.344.518c-.093.217-.14.497-.14.837v5.15H5.065V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z"/></svg></a>
+    <a href="https://github.com/tahfizhabib" target="_blank" rel="noopener" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="mailto:tahfizhabib@proton.me" title="Email"><svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>

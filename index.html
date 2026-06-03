@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="celadon">
+<head>
+<script>!function(){var t=localStorage.getItem("t"),f=localStorage.getItem("f");if(t)document.documentElement.setAttribute("data-theme",t);if(f==="googlesans")document.documentElement.style.fontFamily="'Google Sans','Product Sans',sans-serif";else if(f==="ibmplexmono")document.documentElement.style.fontFamily="'IBM Plex Mono',monospace";else if(f)document.documentElement.style.fontFamily="'Spectral',Georgia,'Book Antiqua',serif"}();</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Miqim's Blog</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧶</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <div class="theme-wrap">
+    <span>theme:</span>
+    <select id="theme" onchange="setTheme(this.value)">
+      <option value="celadon">celadon [light]</option>
+      <option value="rosepine">RoséPine [dark]</option>
+      <option value="lichen">lichen [dark]</option>
+      <option value="nightlight">nightlight [dark]</option>
+    </select>
+  <div class="font-wrap">
+    <span>fonts:</span>
+    <select id="font-select" onchange="setFont(this.value)">
+      <option value="spectral">Spectral</option>
+      <option value="googlesans">Google Sans</option>
+      <option value="ibmplexmono">IBM Plex Mono</option>
+    </select>
+  </div>
+  </div>
+  <div>
+    <a href="index.html" class="active">'blog</a>
+    <a href="hoard.html">hoard</a>
+    <a href="wishlist.html">wishlist</a>
+    <a href="#">projekts</a>
+    <a href="about.html">about</a>
+  </div>
+</nav>
+
+<div class="fund-row visible">
+  <a class="fund-box" href="https://www.map.org.uk/how-to-help/donate/" target="_blank" rel="noopener">
+    <span class="fund-tag">donate</span><span class="fund-name">Medical Aid for Palestinians</span>
+  </a>
+  <a class="fund-box" href="https://islamic-relief.org/" target="_blank" rel="noopener">
+    <span class="fund-tag">donate</span><span class="fund-name">Islamic Relief</span>
+  </a>
+  <a class="fund-box" href="https://keepandroidopen.org/" target="_blank" rel="noopener">
+    <span class="fund-tag">support</span><span class="fund-name">Keep Android Open</span>
+  </a>
+  <a class="fund-box" href="https://www.linuxfoundation.org/" target="_blank" rel="noopener">
+    <span class="fund-tag">support</span><span class="fund-name">Linux Foundation</span>
+  </a>
+</div>
+
+<div class="title-box">
+  <h1>Miqim's Blog</h1>
+  <p class="page-sub">'blog</p>
+</div>
+
+<main>
+  <div class="blog-intro-simple">
+    <p>The Blog,</p>
+    <p>This blog is a collection of thoughts, notes, and ideas I've gathered over the years, many of them shaped by the internet and everyday experiences. It serves as a personal space where I write, archive, and revisit things that continue to interest me. The site is inspired by older minimal web directories and personal archives. Some subjects, such as linguistics and language, are included here as well, though they may eventually grow into a separate dedicated space.</p>
+  </div>
+
+  <div class="welcome-divider">Welcome, Starts Here</div>
+
+  <div class="blog-list" id="blog-grid">
+
+    <div class="year-heading">2024</div>
+
+    <a class="blog-card" data-tag="windows" data-tags="windows hardware gaming" href="posts/ryzen-undervolt.html" data-preview="Idle temps sitting between 55 and 65 degrees doing absolutely nothing. The moment I launched a game it climbed into the high 70s. I reseated the cooler twice. Then I started reading about what the 5700X3D actually is.">
+      <div class="blog-card-date">24/03/2024</div>
+      <div class="blog-card-title">How I Undervolted My Ryzen 7 5700X3D</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+    <a class="blog-card" data-tag="windows" data-tags="windows linux foss gaming" href="posts/atlasos-revios.html" data-preview="It was not one big thing that pushed me over the edge. It was the accumulation of small annoyances over months. The fan spinning up at idle. Random disk activity mid-game. Stutters in Valorant. Task Manager showing 2.4GB of RAM before opening a single app.">
+      <div class="blog-card-date">01/01/2024</div>
+      <div class="blog-card-title">AtlasOS vs ReviOS (Not a review)</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+
+    <div class="year-heading">2023</div>
+
+    <a class="blog-card" data-tag="privacy" data-tags="privacy android foss security degoogling" href="posts/degoogling.html" data-preview="Google has its hands in almost everything we do online. from searches and emails to maps and our smartphones. this convenience comes at a hidden cost and that cost is our data.">
+      <div class="blog-card-date">03/05/2023</div>
+      <div class="blog-card-title">why degoogling matters, respect your privacy</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+    <a class="blog-card" data-tag="android" data-tags="android privacy grapheneos security" href="posts/grapheneos-privacy.html" data-preview="After switching to GrapheneOS, the biggest change was not the OS itself but how I started thinking about privacy in daily use. It stopped being a system feature and slowly became something I had to actively manage.">
+      <div class="blog-card-date">10/05/2023</div>
+      <div class="blog-card-title">part 2: how I started managing privacy after moving to GrapheneOS</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+    <a class="blog-card" data-tag="android" data-tags="android privacy security grapheneos" href="posts/grapheneos.html" data-preview="I did not buy the Pixel 6 randomly. At that point I had already spent a long time jumping between custom ROMs on Xiaomi devices, and the pattern was always the same. The hardware was fine, but Android felt increasingly heavy.">
+      <div class="blog-card-date">05/05/2023</div>
+      <div class="blog-card-title">my take on GrapheneOS</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+    <a class="blog-card" data-tag="linux" data-tags="linux tools ux" href="posts/terminals.html" data-preview="When I was on KDE, Konsole was honestly not something I ever thought about. It was just there all the time. I would open it, run whatever I needed, close it, done. Then I tried kitty and alacritty.">
+      <div class="blog-card-date">04/02/2023</div>
+      <div class="blog-card-title">why i hate modern terminals</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+    <a class="blog-card" data-tag="android" data-tags="android foss linux" href="posts/custom-roms.html" data-preview="I got a Poco X2 during the lockdown period when everything was slow and repetitive. At that time it was just a normal phone purchase. Nothing experimental. Just a device for daily use. But slowly things changed.">
+      <div class="blog-card-date">02/02/2023</div>
+      <div class="blog-card-title">why i love custom ROMs badly</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+    <a class="blog-card" data-tag="web" data-tags="web security ux" href="posts/captcha-pt2.html" data-preview="After spending enough time on the web, you start noticing how often CAPTCHA shows up like it is the default gate for everything. But what you see is just one visible piece of a much larger system.">
+      <div class="blog-card-date">02/01/2023</div>
+      <div class="blog-card-title">the idea that CAPTCHA is the only way is just not true (pt.2)</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+
+    <div class="year-heading">2022</div>
+
+    <a class="blog-card" data-tag="web" data-tags="web ux security" href="posts/captcha.html" data-preview="There was a time when the web felt immediate in a very simple way. You type a link, press enter, and you are in. That flow has slowly changed. Now the first thing you see is often a verification layer, not content.">
+      <div class="blog-card-date">29/12/2022</div>
+      <div class="blog-card-title">my problem with CAPTCHA systems</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+    <a class="blog-card" data-tag="linux" data-tags="linux ux tools desktop" href="posts/gnome-kde.html" data-preview="This was not planned as some kind of comparison or review. It just happened naturally from boredom and habit. I would stick to one desktop for a while, something would feel off, and I would switch. GNOME, KDE, back again.">
+      <div class="blog-card-date">22/12/2022</div>
+      <div class="blog-card-title">GNOME vs KDE</div>
+      <span class="blog-card-arrow">→</span>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-left">
+    <p>© Copyright 2026 by Tahfiz Habib.</p>
+    <p>All thoughts are personal. Lifelong ranting, learning, and documentation.</p>
+    <p>More info: <a href="about.html">imprint</a> &amp; <a href="ai-transparency.html">AI transparency</a>. Subscribe via <a href="#">atom</a> / <a href="#">RSS</a>.</p>
+  </div>
+  <div class="footer-icons">
+    <a href="https://fosstodon.org/@miqim" target="_blank" rel="noopener" title="Mastodon"><svg viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg"><path d="M73.7 17.2C72.7 10.1 66.5 4.5 59.1 3.3 57.8 3.1 52.9 2.4 41.5 2.4h-.1C29.9 2.4 27.5 3.1 26.2 3.3 19 4.5 12.5 9.5 11 16.8c-.7 3.7-.8 7.7-.5 11.5.4 5.7.5 11.3 1.5 16.9 .7 3.6 1.8 7.2 3.4 10.5 3 6.1 7.6 10.3 13.1 12.8 5.9 2.6 12.9 3.2 19.3 1.8 .6-.1 1.2-.3 1.8-.5 1.5-.4 3.2-1 4.5-1.8l-.1-4.4s-2.1.7-4.4 1.3c-3.5.9-7.2 1-10.8.3-6.3-1.3-8-6.4-8.5-8.9-.5-2.3-.4-4.7-.4-4.7 14.7 3.6 27.2 1.6 30.6.8.1 0 .2 0 .3-.1 4.6-1.1 9.6-3.8 10.3-13 .2-1.8.5-6 .5-7.8C73.4 17.5 73.4 17.3 73.7 17.2zM61.5 38.3h-7.7V20c0-3.5-1.5-5.3-4.4-5.3-3.3 0-4.9 2.1-4.9 6.3v9.1H36.9V21c0-4.2-1.7-6.3-5-6.3-2.9 0-4.4 1.8-4.4 5.3v18.3H19.8V20.4c0-3.5.9-6.3 2.7-8.4 1.8-2.1 4.2-3.2 7.2-3.2 3.4 0 6 1.3 7.7 3.9l1.7 2.8 1.7-2.8c1.7-2.6 4.3-3.9 7.7-3.9 3 0 5.4 1.1 7.2 3.2 1.8 2.1 2.7 4.9 2.7 8.4v17.9z"/></svg></a>
+    <a href="https://matrix.to/#/@miqim:matrix.org" target="_blank" rel="noopener" title="Matrix"><svg viewBox="0 0 24 24"><path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.003 1.108.26-.374.636-.704 1.123-.993.489-.288 1.033-.434 1.634-.434.457 0 .883.064 1.272.188.39.125.722.314.996.569.274.255.485.583.635.985.148.4.224.873.224 1.417v5.728h-2.272V12.9c0-.287-.01-.558-.034-.806a1.75 1.75 0 0 0-.156-.633 1.015 1.015 0 0 0-.39-.42c-.174-.1-.41-.153-.706-.153-.296 0-.541.06-.733.18a1.28 1.28 0 0 0-.457.477 1.93 1.93 0 0 0-.23.674 5.54 5.54 0 0 0-.06.818v4.624H9.94V12.9c0-.26-.008-.517-.026-.775a1.935 1.935 0 0 0-.138-.652 1.04 1.04 0 0 0-.375-.46c-.172-.115-.416-.173-.728-.173-.104 0-.24.025-.407.073a1.245 1.245 0 0 0-.44.258 1.47 1.47 0 0 0-.344.518c-.093.217-.14.497-.14.837v5.15H5.065V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z"/></svg></a>
+    <a href="https://github.com/tahfizhabib" target="_blank" rel="noopener" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="mailto:tahfizhabib@proton.me" title="Email"><svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
