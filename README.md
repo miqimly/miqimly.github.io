@@ -32,7 +32,7 @@ miqim-site/
 
 ## Themes
 
-Four themes are available via the selector in the nav — choice is saved to `localStorage`:
+Four themes are available via the selector in the nav, choice is saved to `localStorage`:
 
 | Key | Name | Mode |
 |---|---|---|
