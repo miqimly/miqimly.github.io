@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="celadon">
+<head>
+<script>!function(){var t=localStorage.getItem("t"),f=localStorage.getItem("f");if(t)document.documentElement.setAttribute("data-theme",t);if(f==="googlesans")document.documentElement.style.fontFamily="'Google Sans','Product Sans',sans-serif";else if(f==="ibmplexmono")document.documentElement.style.fontFamily="'IBM Plex Mono',monospace";else if(f)document.documentElement.style.fontFamily="'Spectral',Georgia,'Book Antiqua',serif"}();</script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>the idea that CAPTCHA is the only way is just not true (pt.2) · Miqim's Archive</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <div class="theme-wrap">
+    <span>theme:</span>
+    <select id="theme" onchange="setTheme(this.value)">
+      <option value="celadon">celadon [light]</option>
+      <option value="rosepine">RoséPine [dark]</option>
+      <option value="lichen">lichen [dark]</option>
+      <option value="nightlight">nightlight [dark]</option>
+    </select>
+  <div class="font-wrap">
+    <span>fonts:</span>
+    <select id="font-select" onchange="setFont(this.value)">
+      <option value="spectral">Spectral</option>
+      <option value="googlesans">Google Sans</option>
+      <option value="ibmplexmono">IBM Plex Mono</option>
+    </select>
+  </div>
+  </div>
+  <div>
+    <a href="../index.html" class="active">'blog</a>
+    <a href="../hoard.html">hoard</a>
+    <a href="../wishlist.html">wishlist</a>
+    <a href="#">projekts</a>
+    <a href="../about.html">about</a>
+  </div>
+</nav>
+
+<div class="title-box">
+  <h1>Miqim's Blog</h1>
+  <p class="page-sub">'blog</p>
+</div>
+
+<main>
+<a class="post-back" href="../index.html">← back to blog</a>
+<div class="post-wrap">
+  <div class="post-title">the idea that CAPTCHA is the only way is just not true (pt.2)</div>
+  <div class="post-meta">02 January 2023</div>
+
+  <p>after spending enough time on the web, you start noticing how often CAPTCHA shows up like it is the default gate for everything. login pages, downloads, forms, sometimes even just reading a normal page. it slowly creates this feeling that the internet is basically split into two states: either you pass a test or you do not get access at all.</p>
+  <p>but that is mostly a surface level view. because what you see as CAPTCHA is just one visible piece of a much larger system. most modern websites are not relying only on puzzles anymore. they already use a mix of quieter methods that try to separate normal users from automated traffic without constantly interrupting people.</p>
+  <p>the reason CAPTCHA still exists everywhere is not because nothing else works, but because it is the most direct and visible fallback when other signals are not enough or not confident enough.</p>
+
+  <div class="post-section">most protection is already happening before you see anything</div>
+  <p>a big part of modern bot protection happens before a page even finishes loading. when you open a site, there is often already background evaluation happening on your request.</p>
+  <p>this can include very simple things like request timing, frequency, and repetition patterns. humans naturally browse in an inconsistent way. sometimes you pause, sometimes you click quickly, sometimes you go back, sometimes you reload. bots tend to behave more mechanically, either too fast or too uniform.</p>
+  <p>systems quietly use that difference. there is no popup for it. no message. just a decision like "this looks normal" or "this looks suspicious enough to slow down".</p>
+  <p>so when a page feels instant, it is not because nothing is happening. it is because everything already happened before you noticed.</p>
+  <img class="post-img" src="https://blog.cloudflare.com/content/images/2022/09/Turnstile-Small-Widget.png" alt="Cloudflare Turnstile" onerror="this.style.display='none'"/>
+
+  <div class="post-section">the idea of "silent trust scoring" instead of visible tests</div>
+  <p>instead of forcing a user to prove anything every time, many systems try to build a kind of temporary trust score for a session.</p>
+  <p>this is not something you see directly. it is built from small signals like how stable your session looks, whether your browser behaves consistently, how often requests are repeated, and whether your traffic looks like normal human browsing patterns.</p>
+  <p>if everything fits expected behavior, you pass through instantly. if something feels off, you might get slowed down or pushed into extra checks later.</p>
+  <p>this is where things feel strange from the user side. because there is no clear moment where you are told "you failed this step". it is more like the system just quietly decides your access is not fully trusted yet.</p>
+  <p>and that is why sometimes a site just works instantly, and sometimes it feels like it is stuck "verifying" without explaining what changed.</p>
+
+  <div class="post-section">simple rules that replace heavy challenges in many cases</div>
+  <p>not all protection needs complex systems. a lot of it is still surprisingly simple.</p>
+  <p>for example, rate limiting is one of the most common approaches. it just means if too many requests come too quickly from the same source, the system slows it down or temporarily blocks it.</p>
+  <p>this alone already removes a lot of bot traffic because automated tools tend to hit endpoints in patterns that are too fast or too repetitive.</p>
+  <p>another simple trick is honeypot fields in forms. these are invisible fields that normal users never interact with. humans ignore them because they are not shown. bots often fill them automatically because they process the entire form blindly. if that hidden field has data in it, the system knows something is not right.</p>
+  <p>no puzzle, no image selection, no interaction required from the user at all.</p>
+  <img class="post-img post-img-sm" src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA logo" onerror="this.style.display='none'" style="max-width:100px;margin:1.2rem auto;display:block"/>
+
+  <div class="post-section">when everything is invisible, everything feels random</div>
+  <p>the shift toward invisible protection sounds good on paper. no interruptions, no puzzles, no friction. just smooth access.</p>
+  <p>and when it works, it really does feel better. you just open a page and everything loads instantly without thinking about security layers.</p>
+  <p>but the downside shows up when something goes wrong. because if there is no visible checkpoint, there is also no visible explanation.</p>
+  <p>you do not get told "solve this to continue". you just get blocked, delayed, or silently filtered.</p>
+  <p>so from the user perspective, it feels random even when it is not random at all. there is logic behind it, but it is hidden.</p>
+  <p>that gap between system logic and user visibility is where most frustration comes from.</p>
+
+  <div class="post-section">CAPTCHA is just the part you can actually see</div>
+  <p>CAPTCHA feels like the main system because it is the only part that directly talks to the user. everything else is quiet and invisible.</p>
+  <p>but in reality, CAPTCHA is often just a fallback layer. if the background signals are not enough to decide confidently, then the system asks for a visible confirmation.</p>
+  <p>so instead of being the core method, it is more like the "last resort question" when everything else cannot fully trust the request.</p>
+  <p>that is why it appears in some places and not others, and why the experience feels inconsistent. because most of the decision making is already happening before you ever see a challenge at all.</p>
+  <img class="post-img post-img-sm" src="https://hcaptcha.com/assets/bm/light/hcaptcha-logo.svg" alt="hCaptcha" onerror="this.style.display='none'" style="max-width:180px;margin:1.2rem auto;display:block"/>
+
+</div>
+</main>
+
+<footer>
+  <div class="footer-left">
+    <p>© Copyright 2026 by Tahfiz Habib.</p>
+    <p>All thoughts are personal. Lifelong ranting, learning, and documentation.</p>
+    <p>More info: <a href="../about.html">imprint</a> &amp; <a href="../ai-transparency.html">AI transparency</a>. Subscribe via <a href="#">atom</a> / <a href="#">RSS</a>.</p>
+  </div>
+  <div class="footer-icons">
+    <a href="https://fosstodon.org/@miqim" target="_blank" rel="noopener" title="Mastodon"><svg viewBox="0 0 74 79" xmlns="http://www.w3.org/2000/svg"><path d="M73.7 17.2C72.7 10.1 66.5 4.5 59.1 3.3 57.8 3.1 52.9 2.4 41.5 2.4h-.1C29.9 2.4 27.5 3.1 26.2 3.3 19 4.5 12.5 9.5 11 16.8c-.7 3.7-.8 7.7-.5 11.5.4 5.7.5 11.3 1.5 16.9 .7 3.6 1.8 7.2 3.4 10.5 3 6.1 7.6 10.3 13.1 12.8 5.9 2.6 12.9 3.2 19.3 1.8 .6-.1 1.2-.3 1.8-.5 1.5-.4 3.2-1 4.5-1.8l-.1-4.4s-2.1.7-4.4 1.3c-3.5.9-7.2 1-10.8.3-6.3-1.3-8-6.4-8.5-8.9-.5-2.3-.4-4.7-.4-4.7 14.7 3.6 27.2 1.6 30.6.8.1 0 .2 0 .3-.1 4.6-1.1 9.6-3.8 10.3-13 .2-1.8.5-6 .5-7.8C73.4 17.5 73.4 17.3 73.7 17.2zM61.5 38.3h-7.7V20c0-3.5-1.5-5.3-4.4-5.3-3.3 0-4.9 2.1-4.9 6.3v9.1H36.9V21c0-4.2-1.7-6.3-5-6.3-2.9 0-4.4 1.8-4.4 5.3v18.3H19.8V20.4c0-3.5.9-6.3 2.7-8.4 1.8-2.1 4.2-3.2 7.2-3.2 3.4 0 6 1.3 7.7 3.9l1.7 2.8 1.7-2.8c1.7-2.6 4.3-3.9 7.7-3.9 3 0 5.4 1.1 7.2 3.2 1.8 2.1 2.7 4.9 2.7 8.4v17.9z"/></svg></a>
+    <a href="https://matrix.to/#/@miqim:matrix.org" target="_blank" rel="noopener" title="Matrix"><svg viewBox="0 0 24 24"><path d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.003 1.108.26-.374.636-.704 1.123-.993.489-.288 1.033-.434 1.634-.434.457 0 .883.064 1.272.188.39.125.722.314.996.569.274.255.485.583.635.985.148.4.224.873.224 1.417v5.728h-2.272V12.9c0-.287-.01-.558-.034-.806a1.75 1.75 0 0 0-.156-.633 1.015 1.015 0 0 0-.39-.42c-.174-.1-.41-.153-.706-.153-.296 0-.541.06-.733.18a1.28 1.28 0 0 0-.457.477 1.93 1.93 0 0 0-.23.674 5.54 5.54 0 0 0-.06.818v4.624H9.94V12.9c0-.26-.008-.517-.026-.775a1.935 1.935 0 0 0-.138-.652 1.04 1.04 0 0 0-.375-.46c-.172-.115-.416-.173-.728-.173-.104 0-.24.025-.407.073a1.245 1.245 0 0 0-.44.258 1.47 1.47 0 0 0-.344.518c-.093.217-.14.497-.14.837v5.15H5.065V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z"/></svg></a>
+    <a href="https://github.com/tahfizhabib" target="_blank" rel="noopener" title="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+    <a href="mailto:tahfizhabib@proton.me" title="Email"><svg viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg></a>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
