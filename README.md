@@ -43,7 +43,7 @@ Four themes are available via the selector in the nav — choice is saved to `lo
 
 ## Deployment
 
-This is a static site — no build step needed. Upload the entire folder as-is to:
+This is a static site! no build step needed. Upload the entire folder as-is to:
 
 - **GitHub Pages**: push to `main`, set Pages source to root or `/docs`
 - **Netlify / Vercel**: drag-and-drop or connect repo, deploy root directory
